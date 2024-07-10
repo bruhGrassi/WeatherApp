@@ -1,0 +1,28 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+  min-height: 100vh;
+}
+
+.aside {
+  min-width: 28.688rem;
+  background-color: var(--color-primary);
+  padding: var(--padding-size-medium);
+}
+
+.main {
+  flex: 1;
+  background-color: var(--color-secondary);
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+  }
+
+  .aside,
+  .main {
+    width: 100%;
+    min-width: 100%;
+  }
+}
