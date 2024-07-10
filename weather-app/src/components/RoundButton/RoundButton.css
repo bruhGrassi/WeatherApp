@@ -1,0 +1,35 @@
+.round-button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: var(--box-shadow);
+}
+
+.round-button__icon {
+  background-color: var(--color-action-ternary);
+}
+
+.round-button__icon img {
+  width: 22px;
+}
+
+.round-button__primary,
+.round-button__secondary {
+  font-family: var(--font-family);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-small);
+}
+
+.round-button__primary {
+  background: var(--color-tertiary);
+  color: var(--color-text-tertiary);
+}
+
+.round-button__secondary {
+  background: var(--color-action-secondary);
+  color: var(--color-action-primary);
+}
