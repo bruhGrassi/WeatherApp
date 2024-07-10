@@ -1,0 +1,30 @@
+.location-item {
+  width: 100%;
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-family);
+  font-size: 16px;
+  font-weight: var(--font-weight-regular);
+  line-height: 18.78px;
+  color: var(--color-tertiary);
+  padding: 12px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: border 0.3s ease;
+}
+
+.location-item img {
+  width: 16px;
+  opacity: 0;
+}
+
+.location-item:hover {
+  border: 1px solid var(--color-tertiary);
+  transition: border 0.3s ease;
+}
+
+.location-item:hover img {
+  opacity: 1;
+}
