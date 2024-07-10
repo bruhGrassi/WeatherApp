@@ -1,14 +1,16 @@
-import "./TodayWeather.css";
 import IsoRainSwrsDay from "../../assets/images/IsoRainSwrsDay.png";
 import Pin from "../../assets/icons/pin.png";
 import Crosshair from "../../assets/icons/crosshair.png";
 import RoundButton from "../../components/RoundButton/RoundButton";
+import "./TodayWeather.css";
 
-const TodayWeather = () => {
+const TodayWeather = ({ handleSidebar }) => {
   return (
     <div className="today-weather">
       <div className="today-weather__header">
-        <button className="search__trigger">Search for places</button>
+        <button className="search__trigger" onClick={handleSidebar}>
+          Search for places
+        </button>
         <RoundButton
           variant="icon"
           onClick={() => console.log("Icon button clicked")}
