@@ -1,0 +1,38 @@
+.weather-card {
+  background-color: var(--color-primary);
+  padding: 21px;
+  max-width: 200px;
+}
+
+.weather-card__date,
+.weather-card__temperature--max,
+.weather-card__temperature--min {
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: var(--font-weight-medium);
+  line-height: 18.78px;
+}
+
+.weather-card__date {
+  text-align: center;
+  color: var(--color-action-primary);
+}
+
+.weather-card__image {
+  width: 120px;
+  margin: auto;
+}
+
+.weather-card__temperature {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.weather-card__temperature--max {
+  color: var(--color-action-primary);
+}
+
+.weather-card__temperature--min {
+  color: var(--color-text-primary-light);
+}
