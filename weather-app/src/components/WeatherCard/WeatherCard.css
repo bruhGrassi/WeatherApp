@@ -10,7 +10,7 @@
   font-family: inherit;
   font-size: 16px;
   font-weight: var(--font-weight-medium);
-  line-height: 18.78px;
+  line-height: var(--line-height-xsmall);
 }
 
 .weather-card__date {

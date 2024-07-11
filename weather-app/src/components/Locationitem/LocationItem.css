@@ -7,7 +7,7 @@
   font-family: var(--font-family);
   font-size: 16px;
   font-weight: var(--font-weight-regular);
-  line-height: 18.78px;
+  line-height: var(--line-height-xsmall);
   color: var(--color-tertiary);
   padding: 12px;
   cursor: pointer;
