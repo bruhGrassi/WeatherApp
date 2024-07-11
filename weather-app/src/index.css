@@ -110,3 +110,7 @@ button {
   cursor: pointer;
   background-color: transparent;
 }
+
+button:hover {
+  scale: 1.1;
+}
