@@ -32,7 +32,9 @@
   --box-shadow: 0px 4px 4px 0px #00000040;
 
   /* Padding */
+  --padding-size-small: 21px;
   --padding-size-medium: 42px;
+  --padding-size-large: 84px;
   --padding-size-xlarge: 161px;
 
   /* Magin */

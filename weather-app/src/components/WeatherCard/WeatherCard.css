@@ -1,7 +1,7 @@
 .weather-card {
   background-color: var(--color-primary);
   padding: 21px;
-  max-width: 200px;
+  max-width: 120px;
 }
 
 .weather-card__date,
