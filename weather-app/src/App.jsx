@@ -30,7 +30,6 @@ function App() {
   };
 
   const fetchWeather = async (location) => {
-    console.log("location", location);
     try {
       let url;
 
