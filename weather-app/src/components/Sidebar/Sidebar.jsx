@@ -1,4 +1,4 @@
-import { useState } from "React";
+import { useState, useEffect } from "React";
 import Close from "../../assets/icons/close.png";
 import Search from "../../assets/icons/search.png";
 import LocationItem from "../Locationitem/LocationItem";
@@ -7,6 +7,19 @@ import "./Sidebar.css";
 const Sidebar = ({ handleSidebar, fetchWeather }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [locations, setLocations] = useState([]);
+
+  useEffect(() => {
+    const storedLocations = localStorage.getItem("locations");
+    if (storedLocations) {
+      setLocations(JSON.parse(storedLocations));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (locations.length > 0) {
+      localStorage.setItem("locations", JSON.stringify(locations));
+    }
+  }, [locations]);
 
   const handleSearch = async (event) => {
     event.preventDefault();

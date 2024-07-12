@@ -13,7 +13,7 @@
   cursor: pointer;
   border: 1px solid transparent;
   transition: border 0.3s ease;
-  text-transform: capitalize;
+  text-transform: uppercase;
 }
 
 .location-item img {
