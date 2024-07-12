@@ -10,10 +10,27 @@ const TodayWeather = ({
   description,
   image,
   unit,
+  fetchWeather,
 }) => {
   const iconUrl = `http://openweathermap.org/img/wn/${image}@2x.png`;
   const options = { weekday: "short", month: "short", day: "numeric" };
   const today = new Date().toLocaleDateString("en-US", options);
+
+  const getCurrentLocationWeather = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          fetchWeather({ lat: latitude, lon: longitude });
+        },
+        (error) => {
+          console.error("Geolocation error:", error);
+        }
+      );
+    } else {
+      console.error("Geolocation is not supported by this browser.");
+    }
+  };
 
   return (
     <div className="today-weather">
@@ -21,10 +38,7 @@ const TodayWeather = ({
         <button className="search__trigger" onClick={handleSidebar}>
           Search for places
         </button>
-        <RoundButton
-          variant="icon"
-          onClick={() => console.log("Icon button clicked")}
-        >
+        <RoundButton variant="icon" onClick={getCurrentLocationWeather}>
           <img src={Crosshair} />
         </RoundButton>
       </div>

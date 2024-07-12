@@ -29,14 +29,22 @@ function App() {
     };
   };
 
-  const fetchWeather = async (cityName) => {
+  const fetchWeather = async (location) => {
+    console.log("location", location);
     try {
-      const response = await fetch(`${API_URL}?q=${cityName}&appid=${API_KEY}`);
+      let url;
+
+      if (typeof location === "string") {
+        url = `${API_URL}?q=${location}&appid=${API_KEY}`;
+      } else {
+        url = `${API_URL}?lat=${location.lat}&lon=${location.lon}&appid=${API_KEY}`;
+      }
+
+      const response = await fetch(url);
       if (!response.ok) {
         throw new Error("City not found");
       }
       const data = await response.json();
-      console.log(data);
       const mappedData = mapWeatherData(data);
       setWeatherData(mappedData); //setWeatherData is asynchronous, so the state update is not immediate
       return data;
@@ -84,6 +92,7 @@ function App() {
                   image={weatherData.image}
                   unit={unit}
                   handleSidebar={handleSidebar}
+                  fetchWeather={fetchWeather}
                 />
               )}
             </aside>
