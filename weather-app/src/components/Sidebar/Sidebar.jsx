@@ -33,7 +33,7 @@ const Sidebar = ({ handleSidebar, fetchWeather }) => {
     if (weatherData) {
       setLocations((locations) => [...locations, searchTerm]);
       setSearchTerm("");
-      // handleSidebar();
+      handleSidebar();
     }
   };
 
@@ -43,6 +43,7 @@ const Sidebar = ({ handleSidebar, fetchWeather }) => {
 
   const handleListSearch = async (location) => {
     await fetchWeather(location);
+    handleSidebar();
   };
 
   return (
