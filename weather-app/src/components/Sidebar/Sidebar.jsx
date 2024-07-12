@@ -6,12 +6,22 @@ import "./Sidebar.css";
 
 const Sidebar = ({ handleSidebar, fetchWeather }) => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [locations, setLocations] = useState([]);
 
   const handleSearch = async (event) => {
     event.preventDefault();
-    fetchWeather(searchTerm);
-    setSearchTerm("");
-    handleSidebar();
+
+    if (!searchTerm.trim()) {
+      return;
+    }
+
+    const weatherData = await fetchWeather(searchTerm);
+
+    if (weatherData) {
+      setLocations((locations) => [...locations, searchTerm]);
+      setSearchTerm("");
+      // handleSidebar();
+    }
   };
 
   const handleInputChange = (event) => {
@@ -36,10 +46,9 @@ const Sidebar = ({ handleSidebar, fetchWeather }) => {
         <button className="sidebar__search">Search</button>
       </form>
 
-      <LocationItem text={"London"} />
-      <LocationItem text={"London"} />
-      <LocationItem text={"London"} />
-      <LocationItem text={"London"} />
+      {locations.map((location, index) => (
+        <LocationItem key={index} text={location} />
+      ))}
     </div>
   );
 };
