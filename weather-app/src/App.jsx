@@ -82,7 +82,10 @@ function App() {
           <section className="wrapper">
             <aside className="aside">
               {isSidebar ? (
-                <Sidebar handleSidebar={handleSidebar} />
+                <Sidebar
+                  handleSidebar={handleSidebar}
+                  fetchWeather={fetchWeather}
+                />
               ) : (
                 <TodayWeather
                   cityName={weatherData.name}
