@@ -11,6 +11,9 @@ const TodayWeather = ({
   image,
 }) => {
   const iconUrl = `http://openweathermap.org/img/wn/${image}@2x.png`;
+  const options = { weekday: "short", month: "short", day: "numeric" };
+  const today = new Date().toLocaleDateString("en-US", options);
+
   return (
     <div className="today-weather">
       <div className="today-weather__header">
@@ -35,7 +38,7 @@ const TodayWeather = ({
       <div className="today-weather__climate">{description}</div>
       <div className="today-weather__information">
         <p>
-          <span>Today</span> • <span>Fri, 5 Jun</span>
+          <span>Today</span> • <span>{today}</span>
         </p>
         <p>
           <img src={Pin} alt={Pin} />
