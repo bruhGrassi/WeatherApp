@@ -41,6 +41,10 @@ const Sidebar = ({ handleSidebar, fetchWeather }) => {
     setSearchTerm(event.target.value);
   };
 
+  const handleListSearch = async (location) => {
+    await fetchWeather(location);
+  };
+
   return (
     <div className="sidebar">
       <button className="close__trigger" onClick={handleSidebar}>
@@ -60,7 +64,11 @@ const Sidebar = ({ handleSidebar, fetchWeather }) => {
       </form>
 
       {locations.map((location, index) => (
-        <LocationItem key={index} text={location} />
+        <LocationItem
+          key={index}
+          text={location}
+          handleLocation={() => handleListSearch(location)}
+        />
       ))}
     </div>
   );
