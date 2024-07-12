@@ -21,6 +21,10 @@ function App() {
       temp: data.main.temp,
       description: data.weather[0].main,
       image: data.weather[0].icon,
+      wind: data.wind.speed,
+      humidity: data.main.humidity,
+      visibility: data.visibility,
+      pressure: data.main.pressure,
     };
   };
 
@@ -31,6 +35,7 @@ function App() {
         throw new Error("City not found");
       }
       const data = await response.json();
+      console.log(data);
       const mappedData = mapWeatherData(data);
       setWeatherData(mappedData); //setWeatherData is asynchronous, so the state update is not immediate
       return data;
@@ -91,24 +96,24 @@ function App() {
               <div className="main__highlight">
                 <HighlightCard
                   title={"Wind status"}
-                  data={"7"}
+                  data={weatherData.wind}
                   unit={"mph"}
                   other={true}
                 />
                 <HighlightCard
                   title={"Humidity"}
-                  data={"Humidity"}
+                  data={weatherData.humidity}
                   unit={"%"}
-                  range={"84"}
+                  range={weatherData.humidity}
                 />
                 <HighlightCard
                   title={"Visibility"}
-                  data={"6,4"}
+                  data={weatherData.visibility}
                   unit={"miles"}
                 />
                 <HighlightCard
                   title={"Air Pressure"}
-                  data={"998"}
+                  data={weatherData.pressure}
                   unit={"mb"}
                 />
               </div>
