@@ -15,6 +15,15 @@ function App() {
   const API_KEY = "4d7cbd0d9f544d18cd63e774e861a657";
   const API_URL = `https://api.openweathermap.org/data/2.5/weather`;
 
+  const mapWeatherData = (data) => {
+    return {
+      name: data.name,
+      temp: data.main.temp,
+      description: data.weather[0].main,
+      image: data.weather[0].icon,
+    };
+  };
+
   const fetchWeather = async (cityName) => {
     try {
       const response = await fetch(`${API_URL}?q=${cityName}&appid=${API_KEY}`);
@@ -22,7 +31,8 @@ function App() {
         throw new Error("City not found");
       }
       const data = await response.json();
-      setWeatherData(data); //setWeatherData is asynchronous, so the state update is not immediate
+      const mappedData = mapWeatherData(data);
+      setWeatherData(mappedData); //setWeatherData is asynchronous, so the state update is not immediate
       return data;
     } catch (error) {
       console.error("Error fetching weather data:", error);
@@ -54,7 +64,13 @@ function App() {
               {isSidebar ? (
                 <Sidebar handleSidebar={handleSidebar} />
               ) : (
-                <TodayWeather handleSidebar={handleSidebar} />
+                <TodayWeather
+                  cityName={weatherData.name}
+                  temperature={weatherData.temp}
+                  description={weatherData.description}
+                  image={weatherData.image}
+                  handleSidebar={handleSidebar}
+                />
               )}
             </aside>
             <main className="main">

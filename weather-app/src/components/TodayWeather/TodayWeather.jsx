@@ -1,10 +1,16 @@
-import IsoRainSwrsDay from "../../assets/images/IsoRainSwrsDay.png";
 import Pin from "../../assets/icons/pin.png";
 import Crosshair from "../../assets/icons/crosshair.png";
 import RoundButton from "../../components/RoundButton/RoundButton";
 import "./TodayWeather.css";
 
-const TodayWeather = ({ handleSidebar }) => {
+const TodayWeather = ({
+  handleSidebar,
+  cityName,
+  temperature,
+  description,
+  image,
+}) => {
+  const iconUrl = `http://openweathermap.org/img/wn/${image}@2x.png`;
   return (
     <div className="today-weather">
       <div className="today-weather__header">
@@ -20,19 +26,20 @@ const TodayWeather = ({ handleSidebar }) => {
       </div>
 
       <div className="today-weather__image">
-        <img src={IsoRainSwrsDay} alt="Weather Image" />
+        <img src={iconUrl} alt="Weather Image" />
       </div>
       <div className="today-weather__temperature">
-        15<span>°C</span>
+        {temperature}
+        <span>°C</span>
       </div>
-      <div className="today-weather__climate">Shower</div>
+      <div className="today-weather__climate">{description}</div>
       <div className="today-weather__information">
         <p>
           <span>Today</span> • <span>Fri, 5 Jun</span>
         </p>
         <p>
           <img src={Pin} alt={Pin} />
-          Helsinki
+          {cityName}
         </p>
       </div>
     </div>
