@@ -11,6 +11,7 @@ function App() {
   const [currentCity, setCurrentCity] = useState("London");
   const [weatherData, setWeatherData] = useState({});
   const [error, setError] = useState(null);
+  const [unit, setUnit] = useState("F");
 
   const API_KEY = "4d7cbd0d9f544d18cd63e774e861a657";
   const API_URL = `https://api.openweathermap.org/data/2.5/weather`;
@@ -60,6 +61,13 @@ function App() {
     setIsSidebar(!isSidebar);
   };
 
+  const handleTemperatureUnit = (tempInKelvin, unit) => {
+    if (unit === "C") {
+      return Math.round(tempInKelvin - 273.15);
+    }
+    return Math.round(((tempInKelvin - 273.15) * 9) / 5 + 32);
+  };
+
   return (
     <>
       <div>
@@ -71,17 +79,22 @@ function App() {
               ) : (
                 <TodayWeather
                   cityName={weatherData.name}
-                  temperature={weatherData.temp}
+                  temperature={handleTemperatureUnit(weatherData.temp, unit)}
                   description={weatherData.description}
                   image={weatherData.image}
+                  unit={unit}
                   handleSidebar={handleSidebar}
                 />
               )}
             </aside>
             <main className="main">
               <div className="main__header">
-                <RoundButton variant="primary">°C</RoundButton>
-                <RoundButton variant="secondary">°F</RoundButton>
+                <RoundButton variant="primary" onClick={() => setUnit("C")}>
+                  °C
+                </RoundButton>
+                <RoundButton variant="secondary" onClick={() => setUnit("F")}>
+                  °F
+                </RoundButton>
               </div>
 
               <div className="main__weather">

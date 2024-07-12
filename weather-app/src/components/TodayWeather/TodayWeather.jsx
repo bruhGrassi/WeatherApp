@@ -9,6 +9,7 @@ const TodayWeather = ({
   temperature,
   description,
   image,
+  unit,
 }) => {
   const iconUrl = `http://openweathermap.org/img/wn/${image}@2x.png`;
   const options = { weekday: "short", month: "short", day: "numeric" };
@@ -33,7 +34,7 @@ const TodayWeather = ({
       </div>
       <div className="today-weather__temperature">
         {temperature}
-        <span>°C</span>
+        <span>°{unit === "C" ? "C" : "F"}</span>
       </div>
       <div className="today-weather__climate">{description}</div>
       <div className="today-weather__information">
