@@ -1,4 +1,5 @@
 import { useState, useEffect } from "React";
+import PropTypes from "prop-types";
 import Close from "../../assets/icons/close.png";
 import Search from "../../assets/icons/search.png";
 import LocationItem from "../Locationitem/LocationItem";
@@ -31,9 +32,12 @@ const Sidebar = ({ handleSidebar, fetchWeather }) => {
     const weatherData = await fetchWeather(searchTerm);
 
     if (weatherData) {
-      setLocations((locations) => [...locations, searchTerm]);
-      setSearchTerm("");
-      handleSidebar();
+      setLocations((locations) => {
+        const newLocation = [...locations, searchTerm];
+        handleSidebar();
+        setSearchTerm("");
+        return newLocation;
+      });
     }
   };
 
@@ -73,6 +77,11 @@ const Sidebar = ({ handleSidebar, fetchWeather }) => {
       ))}
     </div>
   );
+};
+
+Sidebar.propTypes = {
+  handleSidebar: PropTypes.func,
+  fetchWeather: PropTypes.func,
 };
 
 export default Sidebar;
