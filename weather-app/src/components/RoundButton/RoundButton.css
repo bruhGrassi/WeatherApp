@@ -16,20 +16,16 @@
   width: 22px;
 }
 
-.round-button__primary,
-.round-button__secondary {
+.round-button__primary {
   font-family: var(--font-family);
   font-size: var(--font-size-small);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-small);
-}
-
-.round-button__primary {
   background: var(--color-tertiary);
   color: var(--color-text-tertiary);
 }
 
-.round-button__secondary {
+.round-button--active {
   background: var(--color-action-secondary);
   color: var(--color-action-primary);
 }

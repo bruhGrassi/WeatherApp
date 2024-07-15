@@ -101,10 +101,18 @@ function App() {
             </aside>
             <main className="main">
               <div className="main__header">
-                <RoundButton variant="primary" onClick={() => setUnit("C")}>
+                <RoundButton
+                  variant="primary"
+                  isActive={unit === "C"}
+                  onClick={() => setUnit("C")}
+                >
                   °C
                 </RoundButton>
-                <RoundButton variant="secondary" onClick={() => setUnit("F")}>
+                <RoundButton
+                  variant="primary"
+                  isActive={unit === "F"}
+                  onClick={() => setUnit("F")}
+                >
                   °F
                 </RoundButton>
               </div>
