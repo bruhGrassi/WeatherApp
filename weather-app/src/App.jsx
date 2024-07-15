@@ -11,7 +11,7 @@ function App() {
   const [currentCity, setCurrentCity] = useState("London");
   const [weatherData, setWeatherData] = useState({});
   const [error, setError] = useState(null);
-  const [unit, setUnit] = useState("F");
+  const [unit, setUnit] = useState("C");
 
   const API_KEY = "4d7cbd0d9f544d18cd63e774e861a657";
   const API_URL = `https://api.openweathermap.org/data/2.5/weather`;
@@ -34,9 +34,9 @@ function App() {
       let url;
 
       if (typeof location === "string") {
-        url = `${API_URL}?q=${location}&appid=${API_KEY}`;
+        url = `${API_URL}?q=${location}&appid=${API_KEY}&units=metric`;
       } else {
-        url = `${API_URL}?lat=${location.lat}&lon=${location.lon}&appid=${API_KEY}`;
+        url = `${API_URL}?lat=${location.lat}&lon=${location.lon}&appid=${API_KEY}&units=metric`;
       }
 
       const response = await fetch(url);
@@ -68,11 +68,12 @@ function App() {
     setIsSidebar(!isSidebar);
   };
 
-  const handleTemperatureUnit = (tempInKelvin, unit) => {
+  const handleTemperatureUnit = (tempInCelsius, unit) => {
     if (unit === "C") {
-      return Math.round(tempInKelvin - 273.15);
+      return Math.trunc(tempInCelsius);
     }
-    return Math.round(((tempInKelvin - 273.15) * 9) / 5 + 32);
+    const tempInFahrenheit = (tempInCelsius * 9) / 5 + 32;
+    return Math.trunc(tempInFahrenheit);
   };
 
   return (
