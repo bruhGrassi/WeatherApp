@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import "./WeatherCard.css";
 
 const WeatherCard = ({ city }) => {
@@ -12,6 +13,10 @@ const WeatherCard = ({ city }) => {
       </div>
     </div>
   );
+};
+
+WeatherCard.propTypes = {
+  city: PropTypes.string,
 };
 
 export default WeatherCard;

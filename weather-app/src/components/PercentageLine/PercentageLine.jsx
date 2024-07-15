@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import "./PercentageLine.css";
 
 const PercentageLine = ({ percentage }) => {
@@ -17,6 +18,10 @@ const PercentageLine = ({ percentage }) => {
       <div className="percentage__label">%</div>
     </div>
   );
+};
+
+PercentageLine.propTypes = {
+  percentage: PropTypes.number,
 };
 
 export default PercentageLine;

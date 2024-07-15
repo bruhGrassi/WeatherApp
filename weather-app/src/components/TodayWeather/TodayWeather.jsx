@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import Pin from "../../assets/icons/pin.png";
 import Crosshair from "../../assets/icons/crosshair.png";
 import RoundButton from "../../components/RoundButton/RoundButton";
@@ -62,6 +63,16 @@ const TodayWeather = ({
       </div>
     </div>
   );
+};
+
+TodayWeather.propTypes = {
+  handleSidebar: PropTypes.func,
+  cityName: PropTypes.string,
+  temperature: PropTypes.number,
+  description: PropTypes.string,
+  image: PropTypes.string,
+  unit: PropTypes.string,
+  fetchWeather: PropTypes.func,
 };
 
 export default TodayWeather;

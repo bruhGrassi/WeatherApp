@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import "./RoundButton.css";
 
 const RoundButton = ({ onClick, children, variant, isActive }) => {
@@ -12,6 +13,13 @@ const RoundButton = ({ onClick, children, variant, isActive }) => {
       {children}
     </button>
   );
+};
+
+RoundButton.propTypes = {
+  onClick: PropTypes.func,
+  children: PropTypes.node,
+  variant: PropTypes.string,
+  isActive: PropTypes.bool,
 };
 
 export default RoundButton;

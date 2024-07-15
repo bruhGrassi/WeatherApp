@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import PercentageLine from "../../components/PercentageLine/PercentageLine";
 import Navigate from "../../assets/icons/navigate.png";
 import "./HighlightCard.css";
@@ -25,6 +26,14 @@ const HighlightCard = ({ title, data, unit, other, range }) => {
       )}
     </div>
   );
+};
+
+HighlightCard.propTypes = {
+  title: PropTypes.string,
+  data: PropTypes.number,
+  unit: PropTypes.string,
+  other: PropTypes.bool,
+  range: PropTypes.number,
 };
 
 export default HighlightCard;
