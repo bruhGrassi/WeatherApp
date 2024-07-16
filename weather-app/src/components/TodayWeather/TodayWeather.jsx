@@ -11,7 +11,7 @@ const TodayWeather = ({
   description,
   image,
   unit,
-  fetchWeather,
+  handleCurrentLocation,
 }) => {
   const iconUrl = `http://openweathermap.org/img/wn/${image}@2x.png`;
   const options = { weekday: "short", month: "short", day: "numeric" };
@@ -22,7 +22,7 @@ const TodayWeather = ({
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
-          fetchWeather({ lat: latitude, lon: longitude });
+          handleCurrentLocation({ lat: latitude, lon: longitude });
         },
         (error) => {
           console.error("Geolocation error:", error);
@@ -72,7 +72,7 @@ TodayWeather.propTypes = {
   description: PropTypes.string,
   image: PropTypes.string,
   unit: PropTypes.string,
-  fetchWeather: PropTypes.func,
+  handleCurrentLocation: PropTypes.func,
 };
 
 export default TodayWeather;

@@ -49,6 +49,7 @@ function App() {
                   image={currentWeatherData.image}
                   unit={unit}
                   handleSidebar={handleSidebar}
+                  handleCurrentLocation={handleLocationSearched}
                 />
               )}
             </aside>
