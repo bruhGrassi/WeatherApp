@@ -36,7 +36,7 @@ function App() {
               {isSidebar ? (
                 <Sidebar
                   handleSidebar={handleSidebar}
-                  onLocationSearched={handleLocationSearched}
+                  handleLocationSearched={handleLocationSearched}
                 />
               ) : (
                 <TodayWeather

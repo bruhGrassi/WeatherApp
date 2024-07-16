@@ -5,7 +5,7 @@ import Search from "../../assets/icons/search.png";
 import LocationItem from "../Locationitem/LocationItem";
 import "./Sidebar.css";
 
-const Sidebar = ({ handleSidebar, onLocationSearched }) => {
+const Sidebar = ({ handleSidebar, handleLocationSearched }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [locations, setLocations] = useState([]);
 
@@ -29,7 +29,7 @@ const Sidebar = ({ handleSidebar, onLocationSearched }) => {
       return;
     }
 
-    onLocationSearched(searchTerm);
+    handleLocationSearched(searchTerm);
 
     setLocations((locations) => {
       const newLocation = [...locations, searchTerm];
@@ -44,7 +44,7 @@ const Sidebar = ({ handleSidebar, onLocationSearched }) => {
   };
 
   const handleListSearch = async (location) => {
-    onLocationSearched(location);
+    handleLocationSearched(location);
     handleSidebar();
   };
 
@@ -79,7 +79,7 @@ const Sidebar = ({ handleSidebar, onLocationSearched }) => {
 
 Sidebar.propTypes = {
   handleSidebar: PropTypes.func,
-  onLocationSearched: PropTypes.func,
+  handleLocationSearched: PropTypes.func,
 };
 
 export default Sidebar;
