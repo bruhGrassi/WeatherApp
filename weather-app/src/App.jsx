@@ -77,8 +77,14 @@ function App() {
                   <WeatherCard
                     key={index}
                     date={forecastItem.date}
-                    min_temp={forecastItem.temp_min}
-                    max_temp={forecastItem.temp_max}
+                    min_temp={handleTemperatureUnit(
+                      forecastItem.temp_min,
+                      unit
+                    )}
+                    max_temp={handleTemperatureUnit(
+                      forecastItem.temp_max,
+                      unit
+                    )}
                     image={forecastItem.image}
                     unit={unit}
                   />
