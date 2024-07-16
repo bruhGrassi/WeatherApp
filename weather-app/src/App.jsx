@@ -72,11 +72,16 @@ function App() {
               </div>
 
               <div className="main__weather">
-                <WeatherCard />
-                <WeatherCard />
-                <WeatherCard />
-                <WeatherCard />
-                <WeatherCard />
+                {forecastWeatherData.map((forecastItem, index) => (
+                  <WeatherCard
+                    key={index}
+                    date={forecastItem.date}
+                    min_temp={forecastItem.temp_min}
+                    max_temp={forecastItem.temp_max}
+                    image={forecastItem.image}
+                    unit={unit}
+                  />
+                ))}
               </div>
               <p className="main__highlight--text">Today's Highlight</p>
 
