@@ -19,7 +19,7 @@ function App() {
   } = useFetchWeather("London");
   const [isSidebar, setIsSidebar] = useState(false);
 
-  const handleLocationSelected = (location) => {
+  const handleLocationSearched = (location) => {
     fetchWeather(location, "current");
   };
 
@@ -36,7 +36,7 @@ function App() {
               {isSidebar ? (
                 <Sidebar
                   handleSidebar={handleSidebar}
-                  onLocationSearched={handleLocationSelected}
+                  onLocationSearched={handleLocationSearched}
                 />
               ) : (
                 <TodayWeather
