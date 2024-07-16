@@ -22,7 +22,7 @@
 }
 
 .today-weather__image img {
-  width: 50%;
+  width: 20vh;
 }
 
 .today-weather__temperature,
@@ -54,7 +54,7 @@
   font-size: var(--font-size-medium);
   font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-medium);
-  padding: 21px 0;
+  padding: 1.3125rem 0;
 }
 
 .today-weather__information p {
@@ -63,25 +63,31 @@
   font-size: var(--font-size-small);
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-small);
-  padding-bottom: 16px;
+  padding-bottom: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 12px;
+  gap: 0.75rem;
 }
 
 .today-weather__information img {
-  width: 18px;
+  width: 1.125rem;
 }
 
 .search__trigger {
   font-family: var(--font-family);
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-xsmall);
   box-shadow: var(--box-shadow);
   color: var(--color-tertiary);
   background: var(--color-action-ternary);
-  height: 40px;
-  width: 161px;
+  height: 2.5rem;
+  width: 10.0625rem;
+}
+
+@media (min-width: 1800px) {
+  .today-weather__temperature {
+    font-size: 8vh;
+  }
 }

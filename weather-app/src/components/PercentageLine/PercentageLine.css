@@ -3,7 +3,7 @@
   align-items: center;
   flex-direction: column;
   width: 100%;
-  max-width: 300px;
+  max-width: 18.75rem;
   margin: 0 auto;
 }
 
@@ -12,13 +12,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 10px;
+  font-size: 0.625rem;
   color: var(--color-tertiary);
 }
 
 .percentage__background {
   width: 100%;
-  height: 8px;
+  height: 0.5rem;
   background: #e0e0e0;
   border-radius: 10px;
   overflow: hidden;
@@ -35,6 +35,6 @@
 .percentage__label {
   width: 100%;
   text-align: right;
-  font-size: 10px;
+  font-size: 0.625rem; /* 10px / 16 */
   color: var(--color-tertiary);
 }

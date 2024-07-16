@@ -66,13 +66,15 @@ const Sidebar = ({ handleSidebar, handleLocationSearched }) => {
         <button className="sidebar__search">Search</button>
       </form>
 
-      {locations.map((location, index) => (
-        <LocationItem
-          key={index}
-          text={location}
-          handleLocation={() => handleListSearch(location)}
-        />
-      ))}
+      <div className="location__wrapper">
+        {locations.map((location, index) => (
+          <LocationItem
+            key={index}
+            text={location}
+            handleLocation={() => handleListSearch(location)}
+          />
+        ))}
+      </div>
     </div>
   );
 };

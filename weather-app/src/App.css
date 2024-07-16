@@ -1,3 +1,125 @@
+:root {
+  /* Font settings */
+  --font-family: "Raleway", sans-serif;
+  --font-size-small: 18px;
+  --font-size-medium: 36px;
+  --font-size-large: 48px;
+  --font-size-xlarge: 144px;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-xsmall: 18.78px;
+  --line-height-small: 21.13px;
+  --line-height-medium: 42.26px;
+  --line-height-large: 56.35px;
+  --line-height-xlarge: 169.06px;
+
+  /* Colors */
+  --color-primary: #1e213a;
+  --color-secondary: #100e1d;
+  --color-tertiary: #e7e7eb;
+  --color-action-primary: #e7e7eb;
+  --color-action-secondary: #585676;
+  --color-action-ternary: #6e707a;
+  --color-text-primary-dark: #88869d;
+  --color-text-primary-light: #a09fb1;
+  --color-text-secondary: #e7e7eb;
+  --color-text-tertiary: #110e3c;
+  --color-search: #3c47e9;
+
+  /* Box shadow */
+  --box-shadow: 0px 4px 4px 0px #00000040;
+
+  /* Padding */
+  --padding-size-small: 21px;
+  --padding-size-medium: 42px;
+  --padding-size-large: 84px;
+  --padding-size-xlarge: 161px;
+
+  /* Magin */
+  --margin-size-small: 16px;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("/fonts/Raleway-Regular.tff") format("tff");
+  font-weight: var(--font-weight-regular);
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("/fonts/Raleway-Medium.tff") format("tff");
+  font-weight: var(--font-weight-medium);
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("/fonts/Raleway-SemiBold.tff") format("tff");
+  font-weight: var(--font-weight-semibold);
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("/fonts/Raleway-Bold.tff") format("tff");
+  font-weight: var(--font-weight-bold);
+  font-style: normal;
+}
+
+/* Resets */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-family);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button {
+  font: inherit;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+button:hover {
+  scale: 1.1;
+  transition: all ease-in-out 0.2s;
+}
+
+.container {
+  overflow: hidden;
+}
+
 .wrapper {
   width: 100%;
   display: flex;
@@ -8,12 +130,16 @@
   min-width: 28.688rem;
   background-color: var(--color-primary);
   padding: var(--padding-size-medium);
+  max-height: 100vh;
+  overflow: hidden;
 }
 
 .main {
+  max-height: 100vh;
   flex: 1;
   background-color: var(--color-secondary);
-  padding: var(--padding-size-medium) 84px 21px;
+  padding: 2.625rem 5.25rem 1.313rem;
+  overflow: auto;
 }
 
 .main__header {
@@ -26,16 +152,17 @@
 .main__weather {
   display: grid;
   justify-content: space-between;
+  gap: 1rem;
 }
 
 .main__highlight--text {
   font-family: inherit;
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: var(--font-weight-bold);
-  line-height: 28.18px;
+  line-height: 1.76125rem;
   text-align: left;
   color: var(--color-tertiary);
-  margin: 62px 0 32px 0;
+  margin: 3.875rem 0 2rem 0;
 }
 
 .main__highlight {
@@ -43,7 +170,7 @@
   gap: 1rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
   .wrapper {
     flex-direction: column;
   }
@@ -55,8 +182,18 @@
     min-height: 100vh;
   }
 
+  .main {
+    padding: 2rem 2rem 1rem;
+  }
+
   .main__highlight {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1280px) {
+  .main {
+    padding: 2rem 2rem 1rem;
   }
 
   .main__weather {
@@ -64,7 +201,7 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1281px) {
   .main__highlight {
     grid-template-columns: repeat(2, 1fr);
   }

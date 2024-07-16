@@ -30,7 +30,7 @@ function App() {
 
   return (
     <>
-      <div>
+      <div className="container">
         {currentWeatherData.name ? (
           <section className="wrapper">
             <aside className="aside">
@@ -93,30 +93,28 @@ function App() {
               <p className="main__highlight--text">Today's Highlight</p>
 
               <div className="main__highlight">
-                <div className="main__highlight">
-                  <HighlightCard
-                    title={"Wind status"}
-                    data={currentWeatherData.wind}
-                    unit={"mph"}
-                    other={true}
-                  />
-                  <HighlightCard
-                    title={"Humidity"}
-                    data={currentWeatherData.humidity}
-                    unit={"%"}
-                    range={currentWeatherData.humidity}
-                  />
-                  <HighlightCard
-                    title={"Visibility"}
-                    data={currentWeatherData.visibility}
-                    unit={"miles"}
-                  />
-                  <HighlightCard
-                    title={"Air Pressure"}
-                    data={currentWeatherData.pressure}
-                    unit={"mb"}
-                  />
-                </div>
+                <HighlightCard
+                  title={"Wind status"}
+                  data={currentWeatherData.wind}
+                  unit={"mph"}
+                  other={true}
+                />
+                <HighlightCard
+                  title={"Humidity"}
+                  data={currentWeatherData.humidity}
+                  unit={"%"}
+                  range={currentWeatherData.humidity}
+                />
+                <HighlightCard
+                  title={"Visibility"}
+                  data={currentWeatherData.visibility}
+                  unit={"miles"}
+                />
+                <HighlightCard
+                  title={"Air Pressure"}
+                  data={currentWeatherData.pressure}
+                  unit={"mb"}
+                />
               </div>
             </main>
           </section>
