@@ -1,4 +1,4 @@
-import { useState, useEffect } from "React";
+import { useState } from "React";
 import useFetchWeather from "./hooks/useFetchWeather";
 import TodayWeather from "./components/TodayWeather/TodayWeather";
 import Sidebar from "./components/Sidebar/Sidebar";
@@ -14,9 +14,14 @@ function App() {
     error,
     unit,
     setUnit,
+    fetchWeather,
     handleTemperatureUnit,
   } = useFetchWeather("London");
   const [isSidebar, setIsSidebar] = useState(false);
+
+  const handleLocationSelected = (location) => {
+    fetchWeather(location, "current");
+  };
 
   const handleSidebar = () => {
     setIsSidebar(!isSidebar);
@@ -29,7 +34,10 @@ function App() {
           <section className="wrapper">
             <aside className="aside">
               {isSidebar ? (
-                <Sidebar handleSidebar={handleSidebar} />
+                <Sidebar
+                  handleSidebar={handleSidebar}
+                  onLocationSearched={handleLocationSelected}
+                />
               ) : (
                 <TodayWeather
                   cityName={currentWeatherData.name}

@@ -105,6 +105,7 @@ const useFetchWeather = (initialLocation = "London") => {
     error,
     unit,
     setUnit,
+    fetchWeather,
     handleTemperatureUnit,
   };
 };

@@ -5,7 +5,7 @@ import Search from "../../assets/icons/search.png";
 import LocationItem from "../Locationitem/LocationItem";
 import "./Sidebar.css";
 
-const Sidebar = ({ handleSidebar, fetchWeather }) => {
+const Sidebar = ({ handleSidebar, onLocationSearched }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [locations, setLocations] = useState([]);
 
@@ -29,16 +29,14 @@ const Sidebar = ({ handleSidebar, fetchWeather }) => {
       return;
     }
 
-    const weatherData = await fetchWeather(searchTerm);
+    onLocationSearched(searchTerm);
 
-    if (weatherData) {
-      setLocations((locations) => {
-        const newLocation = [...locations, searchTerm];
-        handleSidebar();
-        setSearchTerm("");
-        return newLocation;
-      });
-    }
+    setLocations((locations) => {
+      const newLocation = [...locations, searchTerm];
+      handleSidebar();
+      setSearchTerm("");
+      return newLocation;
+    });
   };
 
   const handleInputChange = (event) => {
@@ -46,7 +44,7 @@ const Sidebar = ({ handleSidebar, fetchWeather }) => {
   };
 
   const handleListSearch = async (location) => {
-    await fetchWeather(location);
+    onLocationSearched(location);
     handleSidebar();
   };
 
@@ -81,7 +79,7 @@ const Sidebar = ({ handleSidebar, fetchWeather }) => {
 
 Sidebar.propTypes = {
   handleSidebar: PropTypes.func,
-  fetchWeather: PropTypes.func,
+  onLocationSearched: PropTypes.func,
 };
 
 export default Sidebar;
