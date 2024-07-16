@@ -83,7 +83,7 @@ const useFetchWeather = (initialLocation = "London") => {
 
     const today = new Date().toDateString();
     return Object.values(dailyTemperatures).filter(
-      (item) => item.date.toDateString() !== today
+      (item) => item.date !== today
     );
   };
 
