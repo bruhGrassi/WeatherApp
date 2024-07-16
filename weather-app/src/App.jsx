@@ -21,6 +21,7 @@ function App() {
 
   const handleLocationSearched = (location) => {
     fetchWeather(location, "current");
+    fetchWeather(location, "forecast");
   };
 
   const handleSidebar = () => {
