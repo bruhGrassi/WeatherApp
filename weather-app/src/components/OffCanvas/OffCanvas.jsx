@@ -6,27 +6,15 @@ import LocationItem from "../Locationitem/LocationItem";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import "./OffCanvas.css";
 
-const Sidebar = ({
+const OffCanvas = ({
   handleSidebar,
   handleLocationSearched,
   error,
   isOffCanvas,
+  locations,
+  handleListSearch,
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [locations, setLocations] = useState([]);
-
-  useEffect(() => {
-    const storedLocations = localStorage.getItem("locations");
-    if (storedLocations) {
-      setLocations(JSON.parse(storedLocations));
-    }
-  }, []);
-
-  useEffect(() => {
-    if (locations.length > 0) {
-      localStorage.setItem("locations", JSON.stringify(locations));
-    }
-  }, [locations]);
 
   const handleSearch = async (event) => {
     event.preventDefault();
@@ -37,12 +25,6 @@ const Sidebar = ({
 
     handleLocationSearched(searchTerm);
 
-    setLocations((locations) => {
-      const newLocation = [...locations, searchTerm];
-      setSearchTerm("");
-      return newLocation;
-    });
-
     if (error) {
       handleSidebar();
     }
@@ -50,11 +32,6 @@ const Sidebar = ({
 
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
-  };
-
-  const handleListSearch = async (location) => {
-    handleLocationSearched(location);
-    handleSidebar();
   };
 
   return (
@@ -90,11 +67,13 @@ const Sidebar = ({
   );
 };
 
-Sidebar.propTypes = {
+OffCanvas.propTypes = {
   handleSidebar: PropTypes.func,
   handleLocationSearched: PropTypes.func,
   error: PropTypes.string,
   isOffCanvas: PropTypes.bool,
+  locations: PropTypes.array,
+  handleListSearch: PropTypes.func,
 };
 
-export default Sidebar;
+export default OffCanvas;

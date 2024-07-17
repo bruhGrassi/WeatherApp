@@ -1,4 +1,4 @@
-import { useState } from "React";
+import { useState, useEffect } from "React";
 import useFetchWeather from "./hooks/useFetchWeather";
 import TodayWeather from "./components/TodayWeather/TodayWeather";
 import OffCanvas from "./components/OffCanvas/OffCanvas";
@@ -20,10 +20,29 @@ function App() {
     handleTemperatureUnit,
   } = useFetchWeather("London");
   const [isOffCanvas, setIsOffCanvas] = useState(false);
+  const [locations, setLocations] = useState([]);
+
+  useEffect(() => {
+    const storedLocations = localStorage.getItem("locations");
+    if (storedLocations) {
+      setLocations(JSON.parse(storedLocations));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (locations.length > 0) {
+      localStorage.setItem("locations", JSON.stringify(locations));
+    }
+  }, [locations]);
 
   const handleLocationSearched = (location) => {
     fetchWeather(location, "current");
     fetchWeather(location, "forecast");
+  };
+
+  const handleListSearch = async (location) => {
+    handleLocationSearched(location);
+    handleSidebar();
   };
 
   const handleSidebar = () => {
@@ -43,6 +62,8 @@ function App() {
                 handleLocationSearched={handleLocationSearched}
                 error={error}
                 isOffCanvas={isOffCanvas}
+                locations={locations}
+                handleListSearch={handleListSearch}
               />
 
               <TodayWeather
