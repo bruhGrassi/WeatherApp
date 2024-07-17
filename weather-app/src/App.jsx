@@ -5,6 +5,7 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import RoundButton from "./components/RoundButton/RoundButton";
 import WeatherCard from "./components/WeatherCard/WeatherCard";
 import HighlightCard from "./components/HighlightCard/HighlightCard";
+import Skeleton from "./components/Skeleton/Skeleton";
 import "./App.css";
 
 function App() {
@@ -33,7 +34,7 @@ function App() {
     <>
       <div className="container">
         {isLoading ? (
-          <p>Loading...</p>
+          <Skeleton />
         ) : (
           <section className="wrapper">
             {isLoading}
