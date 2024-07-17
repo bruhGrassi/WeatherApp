@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "React";
 
 const useFetchWeather = (initialLocation = "London") => {
   const [currentWeatherData, setCurrentWeatherData] = useState({});
   const [forecastWeatherData, setForecastWeatherData] = useState([]);
   const [error, setError] = useState(null);
   const [unit, setUnit] = useState("C");
+  const [isLoading, setIsLoading] = useState(false);
 
   const API_KEY = "4d7cbd0d9f544d18cd63e774e861a657";
   const API_URL = `https://api.openweathermap.org/data/2.5/weather`;
@@ -91,6 +92,8 @@ const useFetchWeather = (initialLocation = "London") => {
     try {
       let url, mappedDataFn, setDataFn;
 
+      setIsLoading(true);
+
       if (type === "current") {
         if (typeof location === "string") {
           url = `${API_URL}?q=${location}&appid=${API_KEY}&units=metric`;
@@ -134,12 +137,18 @@ const useFetchWeather = (initialLocation = "London") => {
     } catch (error) {
       console.error("Error fetching weather data:", error);
       setError(error.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchWeather(initialLocation, "current");
-    fetchWeather(initialLocation, "forecast");
+    const fetchData = async () => {
+      await fetchWeather(initialLocation, "current");
+      await fetchWeather(initialLocation, "forecast");
+    };
+
+    fetchData();
   }, [initialLocation]);
 
   const handleTemperatureUnit = (tempInCelsius, unit) => {
@@ -154,6 +163,7 @@ const useFetchWeather = (initialLocation = "London") => {
     forecastWeatherData,
     error,
     unit,
+    isLoading,
     setUnit,
     fetchWeather,
     handleTemperatureUnit,

@@ -13,6 +13,7 @@ function App() {
     forecastWeatherData,
     error,
     unit,
+    isLoading,
     setUnit,
     fetchWeather,
     handleTemperatureUnit,
@@ -31,8 +32,11 @@ function App() {
   return (
     <>
       <div className="container">
-        {currentWeatherData.name ? (
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : (
           <section className="wrapper">
+            {isLoading}
             <aside className="aside">
               {isSidebar ? (
                 <Sidebar
@@ -118,8 +122,6 @@ function App() {
               </div>
             </main>
           </section>
-        ) : (
-          <p>Loading</p>
         )}
       </div>
     </>
