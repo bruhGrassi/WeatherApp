@@ -2,6 +2,7 @@
   max-height: 90%;
   overflow: auto;
   padding-right: 1rem;
+  margin-top: var(--padding-size-medium);
 }
 
 .location-item {

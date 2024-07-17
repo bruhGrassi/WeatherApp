@@ -89,6 +89,7 @@ const useFetchWeather = (initialLocation = "London") => {
   };
 
   const fetchWeather = async (location, type) => {
+    setError("");
     try {
       let url, mappedDataFn, setDataFn;
 

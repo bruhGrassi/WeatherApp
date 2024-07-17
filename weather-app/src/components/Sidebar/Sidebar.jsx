@@ -3,9 +3,10 @@ import PropTypes from "prop-types";
 import Close from "../../assets/icons/close.png";
 import Search from "../../assets/icons/search.png";
 import LocationItem from "../Locationitem/LocationItem";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import "./Sidebar.css";
 
-const Sidebar = ({ handleSidebar, handleLocationSearched }) => {
+const Sidebar = ({ handleSidebar, handleLocationSearched, error }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [locations, setLocations] = useState([]);
 
@@ -33,10 +34,13 @@ const Sidebar = ({ handleSidebar, handleLocationSearched }) => {
 
     setLocations((locations) => {
       const newLocation = [...locations, searchTerm];
-      handleSidebar();
       setSearchTerm("");
       return newLocation;
     });
+
+    if (error) {
+      handleSidebar();
+    }
   };
 
   const handleInputChange = (event) => {
@@ -66,6 +70,8 @@ const Sidebar = ({ handleSidebar, handleLocationSearched }) => {
         <button className="sidebar__search">Search</button>
       </form>
 
+      <ErrorMessage error={error} />
+
       <div className="location__wrapper">
         {locations.map((location, index) => (
           <LocationItem
@@ -82,6 +88,7 @@ const Sidebar = ({ handleSidebar, handleLocationSearched }) => {
 Sidebar.propTypes = {
   handleSidebar: PropTypes.func,
   handleLocationSearched: PropTypes.func,
+  error: PropTypes.string,
 };
 
 export default Sidebar;

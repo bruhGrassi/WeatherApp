@@ -37,12 +37,12 @@ function App() {
           <Skeleton />
         ) : (
           <section className="wrapper">
-            {isLoading}
             <aside className="aside">
               {isSidebar ? (
                 <Sidebar
                   handleSidebar={handleSidebar}
                   handleLocationSearched={handleLocationSearched}
+                  error={error}
                 />
               ) : (
                 <TodayWeather

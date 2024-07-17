@@ -19,7 +19,6 @@
 .sidebar__input {
   flex: 1;
   position: relative;
-  margin-bottom: var(--padding-size-medium);
 }
 
 .sidebar__input input {
