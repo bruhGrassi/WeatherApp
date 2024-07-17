@@ -1,4 +1,4 @@
-import { useState, useEffect } from "React";
+import { useState } from "React";
 import PropTypes from "prop-types";
 import Close from "../../assets/icons/close.png";
 import Search from "../../assets/icons/search.png";
@@ -8,11 +8,11 @@ import "./OffCanvas.css";
 
 const OffCanvas = ({
   handleSidebar,
-  handleLocationSearched,
   error,
   isOffCanvas,
   locations,
   handleListSearch,
+  handleLocationSearched,
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -24,10 +24,6 @@ const OffCanvas = ({
     }
 
     handleLocationSearched(searchTerm);
-
-    if (error) {
-      handleSidebar();
-    }
   };
 
   const handleInputChange = (event) => {
@@ -70,10 +66,11 @@ const OffCanvas = ({
 OffCanvas.propTypes = {
   handleSidebar: PropTypes.func,
   handleLocationSearched: PropTypes.func,
+  handleListSearch: PropTypes.func,
   error: PropTypes.string,
   isOffCanvas: PropTypes.bool,
   locations: PropTypes.array,
-  handleListSearch: PropTypes.func,
+  setLocations: PropTypes.func,
 };
 
 export default OffCanvas;

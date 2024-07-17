@@ -90,6 +90,7 @@ const useFetchWeather = (initialLocation = "London") => {
 
   const fetchWeather = async (location, type) => {
     setError("");
+
     try {
       let url, mappedDataFn, setDataFn;
 
@@ -135,9 +136,13 @@ const useFetchWeather = (initialLocation = "London") => {
       const data = await response.json();
       const mappedData = mappedDataFn(data);
       setDataFn(mappedData);
+
+      return true;
     } catch (error) {
       console.error("Error fetching weather data:", error);
       setError(error.message);
+
+      return false;
     } finally {
       setIsLoading(false);
     }

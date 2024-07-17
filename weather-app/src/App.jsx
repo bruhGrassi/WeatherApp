@@ -35,14 +35,22 @@ function App() {
     }
   }, [locations]);
 
-  const handleLocationSearched = (location) => {
-    fetchWeather(location, "current");
-    fetchWeather(location, "forecast");
+  const handleLocationSearched = async (location) => {
+    const isSuccessful = await fetchWeather(location, "current");
+    if (isSuccessful) {
+      setLocations((locations) => {
+        if (!locations.includes(location)) {
+          return [...locations, location];
+        }
+        return locations;
+      });
+      handleSidebar();
+    }
+    await fetchWeather(location, "forecast");
   };
 
   const handleListSearch = async (location) => {
     handleLocationSearched(location);
-    handleSidebar();
   };
 
   const handleSidebar = () => {
@@ -64,6 +72,7 @@ function App() {
                 isOffCanvas={isOffCanvas}
                 locations={locations}
                 handleListSearch={handleListSearch}
+                setLocations={setLocations}
               />
 
               <TodayWeather
