@@ -36,3 +36,9 @@
 .location-item:hover img {
   opacity: 1;
 }
+
+@media (max-width: 1023px) {
+  .location__wrapper {
+    max-height: 35rem;
+  }
+}
