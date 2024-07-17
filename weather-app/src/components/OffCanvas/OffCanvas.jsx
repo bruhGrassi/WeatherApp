@@ -7,7 +7,7 @@ import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import "./OffCanvas.css";
 
 const OffCanvas = ({
-  handleSidebar,
+  handleOffCanvas,
   error,
   isOffCanvas,
   locations,
@@ -32,7 +32,7 @@ const OffCanvas = ({
 
   return (
     <div className={`off-canvas ${isOffCanvas ? "off-canvas--active" : ""}`}>
-      <button className="close__trigger" onClick={handleSidebar}>
+      <button className="close__trigger" onClick={handleOffCanvas}>
         <img src={Close} alt="Close icon" />
       </button>
       <form className="off-canvas__form" onSubmit={handleSearch}>
@@ -64,7 +64,7 @@ const OffCanvas = ({
 };
 
 OffCanvas.propTypes = {
-  handleSidebar: PropTypes.func,
+  handleOffCanvas: PropTypes.func,
   handleLocationSearched: PropTypes.func,
   handleListSearch: PropTypes.func,
   error: PropTypes.string,

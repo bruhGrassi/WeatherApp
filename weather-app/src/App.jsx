@@ -44,7 +44,7 @@ function App() {
         }
         return locations;
       });
-      handleSidebar();
+      handleOffCanvas();
     }
     await fetchWeather(location, "forecast");
   };
@@ -53,7 +53,7 @@ function App() {
     handleLocationSearched(location);
   };
 
-  const handleSidebar = () => {
+  const handleOffCanvas = () => {
     setIsOffCanvas(!isOffCanvas);
   };
 
@@ -82,7 +82,7 @@ function App() {
           <section className="wrapper">
             <aside className="aside">
               <OffCanvas
-                handleSidebar={handleSidebar}
+                handleOffCanvas={handleOffCanvas}
                 handleLocationSearched={handleLocationSearched}
                 error={error}
                 isOffCanvas={isOffCanvas}
@@ -100,7 +100,7 @@ function App() {
                 description={currentWeatherData.description}
                 image={currentWeatherData.image}
                 unit={unit}
-                handleSidebar={handleSidebar}
+                handleOffCanvas={handleOffCanvas}
                 handleOnClick={handleCurrentLocationPosition}
               />
             </aside>

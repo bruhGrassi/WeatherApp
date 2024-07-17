@@ -5,7 +5,7 @@ import RoundButton from "../../components/RoundButton/RoundButton";
 import "./TodayWeather.css";
 
 const TodayWeather = ({
-  handleSidebar,
+  handleOffCanvas,
   cityName,
   temperature,
   description,
@@ -20,7 +20,7 @@ const TodayWeather = ({
   return (
     <div className="today-weather">
       <div className="today-weather__header">
-        <button className="search__trigger" onClick={handleSidebar}>
+        <button className="search__trigger" onClick={handleOffCanvas}>
           Search for places
         </button>
         <RoundButton variant="icon" onClick={handleOnClick}>
@@ -50,7 +50,7 @@ const TodayWeather = ({
 };
 
 TodayWeather.propTypes = {
-  handleSidebar: PropTypes.func,
+  handleOffCanvas: PropTypes.func,
   cityName: PropTypes.string,
   temperature: PropTypes.number,
   description: PropTypes.string,
