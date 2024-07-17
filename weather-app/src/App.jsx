@@ -37,7 +37,7 @@ function App() {
 
   const handleLocationSearched = async (location) => {
     const isSuccessful = await fetchWeather(location, "current");
-    if (isSuccessful) {
+    if (isSuccessful && typeof location === "string") {
       setLocations((locations) => {
         if (!locations.includes(location)) {
           return [...locations, location];
@@ -55,6 +55,22 @@ function App() {
 
   const handleSidebar = () => {
     setIsOffCanvas(!isOffCanvas);
+  };
+
+  const handleCurrentLocationPosition = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          handleLocationSearched({ lat: latitude, lon: longitude });
+        },
+        (error) => {
+          console.error("Geolocation error:", error);
+        }
+      );
+    } else {
+      console.error("Geolocation is not supported by this browser.");
+    }
   };
 
   return (
@@ -85,7 +101,7 @@ function App() {
                 image={currentWeatherData.image}
                 unit={unit}
                 handleSidebar={handleSidebar}
-                handleCurrentLocation={handleLocationSearched}
+                handleOnClick={handleCurrentLocationPosition}
               />
             </aside>
             <main className="main">
