@@ -150,6 +150,7 @@ button:hover {
   padding: var(--padding-size-medium);
   max-height: 100vh;
   overflow: hidden;
+  position: relative;
 }
 
 .main {

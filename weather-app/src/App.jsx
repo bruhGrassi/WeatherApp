@@ -1,7 +1,7 @@
 import { useState } from "React";
 import useFetchWeather from "./hooks/useFetchWeather";
 import TodayWeather from "./components/TodayWeather/TodayWeather";
-import Sidebar from "./components/Sidebar/Sidebar";
+import OffCanvas from "./components/OffCanvas/OffCanvas";
 import RoundButton from "./components/RoundButton/RoundButton";
 import WeatherCard from "./components/WeatherCard/WeatherCard";
 import HighlightCard from "./components/HighlightCard/HighlightCard";
@@ -19,7 +19,7 @@ function App() {
     fetchWeather,
     handleTemperatureUnit,
   } = useFetchWeather("London");
-  const [isSidebar, setIsSidebar] = useState(false);
+  const [isOffCanvas, setIsOffCanvas] = useState(false);
 
   const handleLocationSearched = (location) => {
     fetchWeather(location, "current");
@@ -27,7 +27,7 @@ function App() {
   };
 
   const handleSidebar = () => {
-    setIsSidebar(!isSidebar);
+    setIsOffCanvas(!isOffCanvas);
   };
 
   return (
@@ -38,26 +38,25 @@ function App() {
         ) : (
           <section className="wrapper">
             <aside className="aside">
-              {isSidebar ? (
-                <Sidebar
-                  handleSidebar={handleSidebar}
-                  handleLocationSearched={handleLocationSearched}
-                  error={error}
-                />
-              ) : (
-                <TodayWeather
-                  cityName={currentWeatherData.name}
-                  temperature={handleTemperatureUnit(
-                    currentWeatherData.temp,
-                    unit
-                  )}
-                  description={currentWeatherData.description}
-                  image={currentWeatherData.image}
-                  unit={unit}
-                  handleSidebar={handleSidebar}
-                  handleCurrentLocation={handleLocationSearched}
-                />
-              )}
+              <OffCanvas
+                handleSidebar={handleSidebar}
+                handleLocationSearched={handleLocationSearched}
+                error={error}
+                isOffCanvas={isOffCanvas}
+              />
+
+              <TodayWeather
+                cityName={currentWeatherData.name}
+                temperature={handleTemperatureUnit(
+                  currentWeatherData.temp,
+                  unit
+                )}
+                description={currentWeatherData.description}
+                image={currentWeatherData.image}
+                unit={unit}
+                handleSidebar={handleSidebar}
+                handleCurrentLocation={handleLocationSearched}
+              />
             </aside>
             <main className="main">
               <div className="main__header">
