@@ -1,16 +1,14 @@
 import { useState, useEffect } from "react";
 import { mapCurrentWeatherData, mapForecastData } from "../lib/mappers";
+import { WEATHER_TYPES, API, UNITS } from "../constants";
+import { API_KEY } from "../config";
 
 const useFetchWeather = (initialLocation = "London") => {
   const [currentWeatherData, setCurrentWeatherData] = useState({});
   const [forecastWeatherData, setForecastWeatherData] = useState([]);
   const [error, setError] = useState(null);
-  const [unit, setUnit] = useState("C");
+  const [unit, setUnit] = useState(UNITS.CELCIUS);
   const [isLoading, setIsLoading] = useState(false);
-
-  const API_KEY = "4d7cbd0d9f544d18cd63e774e861a657";
-  const API_URL = `https://api.openweathermap.org/data/2.5/weather`;
-  const API_FORECAST_URL = `https://api.openweathermap.org/data/2.5/forecast`;
 
   const fetchWeather = async (location, type) => {
     setError("");
@@ -20,29 +18,29 @@ const useFetchWeather = (initialLocation = "London") => {
 
       setIsLoading(true);
 
-      if (type === "current") {
+      if (type === WEATHER_TYPES.CURRENT) {
         if (typeof location === "string") {
-          url = `${API_URL}?q=${location}&appid=${API_KEY}&units=metric`;
+          url = `${API.CURRENT_URL}?q=${location}&appid=${API_KEY}&units=metric`;
         } else if (
           typeof location === "object" &&
           location.lat &&
           location.lon
         ) {
-          url = `${API_URL}?lat=${location.lat}&lon=${location.lon}&appid=${API_KEY}&units=metric`;
+          url = `${API.CURRENT_URL}?lat=${location.lat}&lon=${location.lon}&appid=${API_KEY}&units=metric`;
         } else {
           throw new Error("Invalid location format");
         }
         mappedDataFn = mapCurrentWeatherData;
         setDataFn = setCurrentWeatherData;
-      } else if (type === "forecast") {
+      } else if (type === WEATHER_TYPES.FORECAST) {
         if (typeof location === "string") {
-          url = `${API_FORECAST_URL}?q=${location}&appid=${API_KEY}&units=metric`;
+          url = `${API.FORECAST_URL}?q=${location}&appid=${API_KEY}&units=metric`;
         } else if (
           typeof location === "object" &&
           location.lat &&
           location.lon
         ) {
-          url = `${API_FORECAST_URL}?lat=${location.lat}&lon=${location.lon}&appid=${API_KEY}&units`;
+          url = `${API.FORECAST_URL}?lat=${location.lat}&lon=${location.lon}&appid=${API_KEY}&units`;
         } else {
           throw new Error("Invalid location format");
         }
@@ -74,15 +72,15 @@ const useFetchWeather = (initialLocation = "London") => {
 
   useEffect(() => {
     const fetchData = async () => {
-      await fetchWeather(initialLocation, "current");
-      await fetchWeather(initialLocation, "forecast");
+      await fetchWeather(initialLocation, WEATHER_TYPES.CURRENT);
+      await fetchWeather(initialLocation, WEATHER_TYPES.FORECAST);
     };
 
     fetchData();
   }, [initialLocation]);
 
   const handleTemperatureUnit = (tempInCelsius, unit) => {
-    if (unit === "C") {
+    if (unit === UNITS.CELCIUS) {
       return Math.trunc(tempInCelsius);
     }
     return Math.trunc((tempInCelsius * 9) / 5 + 32);

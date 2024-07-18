@@ -6,6 +6,7 @@ import RoundButton from "./components/RoundButton/RoundButton";
 import WeatherCard from "./components/WeatherCard/WeatherCard";
 import HighlightCard from "./components/HighlightCard/HighlightCard";
 import Skeleton from "./components/Skeleton/Skeleton";
+import { WEATHER_TYPES, UNITS } from "./constants";
 import "./App.css";
 
 function App() {
@@ -36,7 +37,7 @@ function App() {
   }, [locations]);
 
   const handleLocationSearched = async (location) => {
-    const isSuccessful = await fetchWeather(location, "current");
+    const isSuccessful = await fetchWeather(location, WEATHER_TYPES.CURRENT);
     if (isSuccessful && typeof location === "string") {
       setLocations((locations) => {
         if (!locations.includes(location)) {
@@ -46,7 +47,7 @@ function App() {
       });
       handleOffCanvas();
     }
-    await fetchWeather(location, "forecast");
+    await fetchWeather(location, WEATHER_TYPES.FORECAST);
   };
 
   const handleListSearch = async (location) => {
@@ -108,15 +109,15 @@ function App() {
               <div className="main__header">
                 <RoundButton
                   variant="primary"
-                  isActive={unit === "C"}
-                  onClick={() => setUnit("C")}
+                  isActive={unit === UNITS.CELCIUS}
+                  onClick={() => setUnit(UNITS.CELCIUS)}
                 >
                   °C
                 </RoundButton>
                 <RoundButton
                   variant="primary"
-                  isActive={unit === "F"}
-                  onClick={() => setUnit("F")}
+                  isActive={unit === UNITS.FAHRENHEIT}
+                  onClick={() => setUnit(UNITS.FAHRENHEIT)}
                 >
                   °F
                 </RoundButton>

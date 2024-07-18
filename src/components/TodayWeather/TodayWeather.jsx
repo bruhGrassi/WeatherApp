@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import Pin from "../../assets/icons/pin.png";
 import Crosshair from "../../assets/icons/crosshair.png";
 import RoundButton from "../../components/RoundButton/RoundButton";
+import { UNITS } from "../../constants";
 import "./TodayWeather.css";
 
 const TodayWeather = ({
@@ -33,7 +34,9 @@ const TodayWeather = ({
       </div>
       <div className="today-weather__temperature">
         {temperature}
-        <span>°{unit === "C" ? "C" : "F"}</span>
+        <span>
+          °{unit === UNITS.CELCIUS ? UNITS.CELCIUS : UNITS.FAHRENHEIT}
+        </span>
       </div>
       <div className="today-weather__climate">{description}</div>
       <div className="today-weather__information">
