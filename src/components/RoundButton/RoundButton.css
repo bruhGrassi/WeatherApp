@@ -21,11 +21,11 @@
   font-size: var(--font-size-small);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-small);
-  background: var(--color-tertiary);
-  color: var(--color-text-tertiary);
+  background: var(--color-action-secondary);
+  color: var(--color-action-primary);
 }
 
 .round-button--active {
-  background: var(--color-action-secondary);
-  color: var(--color-action-primary);
+  background: var(--color-tertiary);
+  color: var(--color-text-tertiary);
 }
