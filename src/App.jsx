@@ -1,4 +1,4 @@
-import { useState, useEffect } from "React";
+import { useState, useEffect } from "react";
 import useFetchWeather from "./hooks/useFetchWeather";
 import TodayWeather from "./components/TodayWeather/TodayWeather";
 import OffCanvas from "./components/OffCanvas/OffCanvas";
