@@ -10,6 +10,7 @@ import { WEATHER_TYPES, UNITS } from "./constants";
 import "./App.css";
 
 function App() {
+  const initialLocation = "Firenze";
   const {
     currentWeatherData,
     forecastWeatherData,
@@ -19,7 +20,7 @@ function App() {
     setUnit,
     fetchWeather,
     handleTemperatureUnit,
-  } = useFetchWeather("London");
+  } = useFetchWeather(initialLocation);
   const [isLocationSearchOpen, setIsLocationSearchOpen] = useState(false);
   const [locations, setLocations] = useState([]);
 

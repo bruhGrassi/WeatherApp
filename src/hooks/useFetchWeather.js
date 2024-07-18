@@ -3,12 +3,12 @@ import { mapCurrentWeatherData, mapForecastData } from "../lib/mappers";
 import { WEATHER_TYPES, API, UNITS } from "../constants";
 import { API_KEY } from "../config";
 
-const useFetchWeather = (initialLocation = "London") => {
+const useFetchWeather = (initialLocation) => {
   const [currentWeatherData, setCurrentWeatherData] = useState({});
   const [forecastWeatherData, setForecastWeatherData] = useState([]);
   const [error, setError] = useState(null);
   const [unit, setUnit] = useState(UNITS.CELCIUS);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const generateUrl = (location, type, apiKey) => {
     const baseEndpoint =
@@ -61,14 +61,31 @@ const useFetchWeather = (initialLocation = "London") => {
     }
   };
 
+  const fetchWeatherForLocation = async (location) => {
+    await fetchWeather(location, WEATHER_TYPES.CURRENT);
+    await fetchWeather(location, WEATHER_TYPES.FORECAST);
+  };
+
   useEffect(() => {
     const fetchData = async () => {
-      await fetchWeather(initialLocation, WEATHER_TYPES.CURRENT);
-      await fetchWeather(initialLocation, WEATHER_TYPES.FORECAST);
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          async (position) => {
+            const { latitude, longitude } = position.coords;
+            await fetchWeatherForLocation({ lat: latitude, lon: longitude });
+          },
+          async (error) => {
+            console.error("Geolocation error:", error);
+            await fetchWeatherForLocation(initialLocation);
+          }
+        );
+      } else {
+        await fetchWeatherForLocation(initialLocation);
+      }
     };
 
     fetchData();
-  }, [initialLocation]);
+  }, []);
 
   const handleTemperatureUnit = (tempInCelsius, unit) => {
     if (unit === UNITS.CELCIUS) {
