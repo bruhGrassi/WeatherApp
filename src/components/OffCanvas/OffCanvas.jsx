@@ -1,4 +1,4 @@
-import { useState } from "React";
+import { useState } from "react";
 import PropTypes from "prop-types";
 import Close from "../../assets/icons/close.png";
 import Search from "../../assets/icons/search.png";
