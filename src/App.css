@@ -189,6 +189,26 @@ button:hover {
   gap: 1rem;
 }
 
+.link {
+  display: block;
+  width: 100%;
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-medium);
+  line-height: 1.067rem;
+  text-align: center;
+  color: var(--color-text-primary-light);
+  text-decoration: none;
+  padding: 4rem 0 1rem 0;
+}
+
+.link span {
+  font-weight: var(--font-weight-semibold);
+}
+
+.link:visited {
+  color: var(--color-text-primary-light);
+}
+
 @media (max-width: 1023px) {
   .wrapper {
     flex-direction: column;

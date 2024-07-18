@@ -168,6 +168,14 @@ function App() {
                   unit={"mb"}
                 />
               </div>
+
+              <a
+                href="https://github.com/bruhGrassi"
+                target="_blank"
+                className="link"
+              >
+                Create by <span>Bruna Grassi</span>
+              </a>
             </main>
           </section>
         )}
