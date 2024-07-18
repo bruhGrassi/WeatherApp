@@ -86,6 +86,12 @@
   width: 10.0625rem;
 }
 
+@media (max-width: 1023px) {
+  .today-weather__image img {
+    width: max(20vh, 10rem);
+  }
+}
+
 @media (min-width: 1800px) {
   .today-weather__temperature {
     font-size: 8vh;
