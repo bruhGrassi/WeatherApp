@@ -36,7 +36,7 @@ function App() {
     }
   }, [locations]);
 
-  const handleLocationSearched = async (location) => {
+  const handleLocationSearch = async (location) => {
     const isSuccessful = await fetchWeather(location, WEATHER_TYPES.CURRENT);
     if (isSuccessful && typeof location === "string") {
       setLocations((locations) => {
@@ -45,16 +45,16 @@ function App() {
         }
         return locations;
       });
-      handleLocationSearch();
+      handleLocationSearchVisibility();
     }
     await fetchWeather(location, WEATHER_TYPES.FORECAST);
   };
 
   const handleListSearch = async (location) => {
-    handleLocationSearched(location);
+    handleLocationSearch(location);
   };
 
-  const handleLocationSearch = () => {
+  const handleLocationSearchVisibility = () => {
     setIsLocationSearchOpen((prev) => !prev);
   };
 
@@ -63,7 +63,7 @@ function App() {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
-          handleLocationSearched({ lat: latitude, lon: longitude });
+          handleLocationSearch({ lat: latitude, lon: longitude });
         },
         (error) => {
           console.error("Geolocation error:", error);
@@ -83,8 +83,8 @@ function App() {
           <section className="wrapper">
             <aside className="aside">
               <LocationSearch
+                handleLocationSearchVisibility={handleLocationSearchVisibility}
                 handleLocationSearch={handleLocationSearch}
-                handleLocationSearched={handleLocationSearched}
                 error={error}
                 isLocationSearchOpen={isLocationSearchOpen}
                 locations={locations}
@@ -101,7 +101,7 @@ function App() {
                 description={currentWeatherData.description}
                 image={currentWeatherData.image}
                 unit={unit}
-                handleLocationSearch={handleLocationSearch}
+                handleLocationSearchVisibility={handleLocationSearchVisibility}
                 handleOnClick={handleCurrentLocationPosition}
               />
             </aside>

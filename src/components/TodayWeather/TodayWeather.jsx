@@ -6,7 +6,7 @@ import { UNITS, ICON_URL } from "../../constants";
 import "./TodayWeather.css";
 
 const TodayWeather = ({
-  handleLocationSearch,
+  handleLocationSearchVisibility,
   cityName,
   temperature,
   description,
@@ -21,7 +21,10 @@ const TodayWeather = ({
   return (
     <div className="today-weather">
       <div className="today-weather__header">
-        <button className="search__trigger" onClick={handleLocationSearch}>
+        <button
+          className="search__trigger"
+          onClick={handleLocationSearchVisibility}
+        >
           Search for places
         </button>
         <RoundButton variant="icon" onClick={handleOnClick}>
@@ -53,7 +56,7 @@ const TodayWeather = ({
 };
 
 TodayWeather.propTypes = {
-  handleLocationSearch: PropTypes.func,
+  handleLocationSearchVisibility: PropTypes.func,
   cityName: PropTypes.string,
   temperature: PropTypes.number,
   description: PropTypes.string,

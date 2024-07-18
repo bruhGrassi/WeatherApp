@@ -7,12 +7,12 @@ import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import "./LocationSearch.css";
 
 const LocationSearch = ({
-  handleLocationSearch,
+  handleLocationSearchVisibility,
   error,
   isLocationSearchOpen,
   locations,
   handleListSearch,
-  handleLocationSearched,
+  handleLocationSearch,
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -23,7 +23,7 @@ const LocationSearch = ({
       return;
     }
 
-    handleLocationSearched(searchTerm);
+    handleLocationSearch(searchTerm);
   };
 
   const handleInputChange = (event) => {
@@ -36,7 +36,10 @@ const LocationSearch = ({
         isLocationSearchOpen ? "location-search--active" : ""
       }`}
     >
-      <button className="close__trigger" onClick={handleLocationSearch}>
+      <button
+        className="close__trigger"
+        onClick={handleLocationSearchVisibility}
+      >
         <img src={Close} alt="Close icon" />
       </button>
       <form className="location-search__form" onSubmit={handleSearch}>
@@ -68,8 +71,8 @@ const LocationSearch = ({
 };
 
 LocationSearch.propTypes = {
+  handleLocationSearchVisibility: PropTypes.func,
   handleLocationSearch: PropTypes.func,
-  handleLocationSearched: PropTypes.func,
   handleListSearch: PropTypes.func,
   error: PropTypes.string,
   isLocationSearchOpen: PropTypes.bool,
