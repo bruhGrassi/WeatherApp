@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
-import { UNITS } from "../../constants";
+import { UNITS, ICON_URL } from "../../constants";
 import "./WeatherCard.css";
 
 const WeatherCard = ({ date, min_temp, max_temp, image, unit }) => {
-  const iconUrl = `http://openweathermap.org/img/wn/${image}@2x.png`;
+  const iconUrl = `${ICON_URL}${image}@4x.png`;
   return (
     <div className="weather-card">
       <div className="weather-card__date">{date}</div>

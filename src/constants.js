@@ -12,3 +12,5 @@ export const UNITS = {
   CELCIUS: "C",
   FAHRENHEIT: "F",
 };
+
+export const ICON_URL = "http://openweathermap.org/img/wn/";

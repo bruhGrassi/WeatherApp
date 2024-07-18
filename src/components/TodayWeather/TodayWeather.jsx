@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import Pin from "../../assets/icons/pin.png";
 import Crosshair from "../../assets/icons/crosshair.png";
 import RoundButton from "../../components/RoundButton/RoundButton";
-import { UNITS } from "../../constants";
+import { UNITS, ICON_URL } from "../../constants";
 import "./TodayWeather.css";
 
 const TodayWeather = ({
@@ -14,7 +14,7 @@ const TodayWeather = ({
   unit,
   handleOnClick,
 }) => {
-  const iconUrl = `http://openweathermap.org/img/wn/${image}@2x.png`;
+  const iconUrl = `${ICON_URL}${image}@4x.png`;
   const options = { weekday: "short", month: "short", day: "numeric" };
   const today = new Date().toLocaleDateString("en-US", options);
 
