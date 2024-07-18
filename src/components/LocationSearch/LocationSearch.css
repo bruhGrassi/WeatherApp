@@ -1,4 +1,4 @@
-.off-canvas {
+.location-search {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -12,27 +12,28 @@
   transition: all ease-in-out 0.4s;
 }
 
-.off-canvas--active {
+.location-search--active {
   transform: translateX(0);
 }
 
-.off-canvas__form {
+.location-search__form {
   width: 100%;
   display: flex;
   gap: 0.5rem;
+  margin-top: 2.5rem;
 }
 
-.off-canvas__input,
-.off-canvas__search {
+.location-search__input,
+.location-search__trigger {
   height: 3rem;
 }
 
-.off-canvas__input {
+.location-search__input {
   flex: 1;
   position: relative;
 }
 
-.off-canvas__input input {
+.location-search__input input {
   width: 100%;
   height: 100%;
   border: 1px solid var(--color-tertiary);
@@ -41,7 +42,7 @@
   color: var(--color-tertiary);
 }
 
-.off-canvas__input img {
+.location-search__input img {
   position: absolute;
   top: 50%;
   left: 0.75rem;
@@ -49,7 +50,7 @@
   transform: translateY(-50%);
 }
 
-.off-canvas__search {
+.location-search__trigger {
   width: 5.375rem;
   background: var(--color-search);
   color: var(--color-tertiary);
@@ -62,6 +63,6 @@
   background: transparent;
   width: 1.084375rem;
   position: absolute;
-  right: 1rem;
-  top: 1rem;
+  right: 2.5rem;
+  top: 2rem;
 }

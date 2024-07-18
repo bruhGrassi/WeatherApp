@@ -4,12 +4,12 @@ import Close from "../../assets/icons/close.png";
 import Search from "../../assets/icons/search.png";
 import LocationItem from "../Locationitem/LocationItem";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
-import "./OffCanvas.css";
+import "./LocationSearch.css";
 
-const OffCanvas = ({
-  handleOffCanvas,
+const LocationSearch = ({
+  handleLocationSearch,
   error,
-  isOffCanvas,
+  isLocationSearchOpen,
   locations,
   handleListSearch,
   handleLocationSearched,
@@ -31,12 +31,16 @@ const OffCanvas = ({
   };
 
   return (
-    <div className={`off-canvas ${isOffCanvas ? "off-canvas--active" : ""}`}>
-      <button className="close__trigger" onClick={handleOffCanvas}>
+    <div
+      className={`location-search ${
+        isLocationSearchOpen ? "location-search--active" : ""
+      }`}
+    >
+      <button className="close__trigger" onClick={handleLocationSearch}>
         <img src={Close} alt="Close icon" />
       </button>
-      <form className="off-canvas__form" onSubmit={handleSearch}>
-        <div className="off-canvas__input">
+      <form className="location-search__form" onSubmit={handleSearch}>
+        <div className="location-search__input">
           <input
             type="text"
             placeholder="search location"
@@ -45,7 +49,7 @@ const OffCanvas = ({
           />
           <img src={Search} alt="Search icon" />
         </div>
-        <button className="off-canvas__search">Search</button>
+        <button className="location-search__trigger">Search</button>
       </form>
 
       <ErrorMessage error={error} />
@@ -63,14 +67,14 @@ const OffCanvas = ({
   );
 };
 
-OffCanvas.propTypes = {
-  handleOffCanvas: PropTypes.func,
+LocationSearch.propTypes = {
+  handleLocationSearch: PropTypes.func,
   handleLocationSearched: PropTypes.func,
   handleListSearch: PropTypes.func,
   error: PropTypes.string,
-  isOffCanvas: PropTypes.bool,
+  isLocationSearchOpen: PropTypes.bool,
   locations: PropTypes.array,
   setLocations: PropTypes.func,
 };
 
-export default OffCanvas;
+export default LocationSearch;

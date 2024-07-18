@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import useFetchWeather from "./hooks/useFetchWeather";
 import TodayWeather from "./components/TodayWeather/TodayWeather";
-import OffCanvas from "./components/OffCanvas/OffCanvas";
+import LocationSearch from "./components/LocationSearch/LocationSearch";
 import RoundButton from "./components/RoundButton/RoundButton";
 import WeatherCard from "./components/WeatherCard/WeatherCard";
 import HighlightCard from "./components/HighlightCard/HighlightCard";
@@ -20,7 +20,7 @@ function App() {
     fetchWeather,
     handleTemperatureUnit,
   } = useFetchWeather("London");
-  const [isOffCanvas, setIsOffCanvas] = useState(false);
+  const [isLocationSearchOpen, setIsLocationSearchOpen] = useState(false);
   const [locations, setLocations] = useState([]);
 
   useEffect(() => {
@@ -45,7 +45,7 @@ function App() {
         }
         return locations;
       });
-      handleOffCanvas();
+      handleLocationSearch();
     }
     await fetchWeather(location, WEATHER_TYPES.FORECAST);
   };
@@ -54,8 +54,8 @@ function App() {
     handleLocationSearched(location);
   };
 
-  const handleOffCanvas = () => {
-    setIsOffCanvas(!isOffCanvas);
+  const handleLocationSearch = () => {
+    setIsLocationSearchOpen((prev) => !prev);
   };
 
   const handleCurrentLocationPosition = () => {
@@ -82,11 +82,11 @@ function App() {
         ) : (
           <section className="wrapper">
             <aside className="aside">
-              <OffCanvas
-                handleOffCanvas={handleOffCanvas}
+              <LocationSearch
+                handleLocationSearch={handleLocationSearch}
                 handleLocationSearched={handleLocationSearched}
                 error={error}
-                isOffCanvas={isOffCanvas}
+                isLocationSearchOpen={isLocationSearchOpen}
                 locations={locations}
                 handleListSearch={handleListSearch}
                 setLocations={setLocations}
@@ -101,7 +101,7 @@ function App() {
                 description={currentWeatherData.description}
                 image={currentWeatherData.image}
                 unit={unit}
-                handleOffCanvas={handleOffCanvas}
+                handleLocationSearch={handleLocationSearch}
                 handleOnClick={handleCurrentLocationPosition}
               />
             </aside>
