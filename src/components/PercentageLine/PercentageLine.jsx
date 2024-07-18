@@ -9,12 +9,11 @@ const PercentageLine = ({ percentage }) => {
         <span>50</span>
         <span>100</span>
       </div>
-      <div className="percentage__background">
-        <div
-          className="percentage__foreground"
-          style={{ width: `${percentage}%` }}
-        ></div>
-      </div>
+      <progress
+        className="percentage__progress"
+        value={percentage}
+        max="100"
+      ></progress>
       <div className="percentage__label">%</div>
     </div>
   );
