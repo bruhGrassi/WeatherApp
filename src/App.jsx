@@ -51,10 +51,6 @@ function App() {
     handleLocationSearchVisibility();
   };
 
-  const handleListSearch = async (location) => {
-    handleLocationSearch(location);
-  };
-
   const handleLocationSearchVisibility = () => {
     setIsLocationSearchOpen((prev) => !prev);
   };
@@ -88,7 +84,6 @@ function App() {
               error={error}
               isLocationSearchOpen={isLocationSearchOpen}
               locations={locations}
-              handleListSearch={handleListSearch}
               setLocations={setLocations}
             />
 

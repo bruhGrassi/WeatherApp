@@ -11,7 +11,6 @@ const LocationSearch = ({
   error,
   isLocationSearchOpen,
   locations,
-  handleListSearch,
   handleLocationSearch,
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -62,7 +61,7 @@ const LocationSearch = ({
           <LocationItem
             key={index}
             text={location}
-            handleLocation={() => handleListSearch(location)}
+            handleLocation={() => handleLocationSearch(location)}
           />
         ))}
       </div>
@@ -73,7 +72,6 @@ const LocationSearch = ({
 LocationSearch.propTypes = {
   handleLocationSearchVisibility: PropTypes.func,
   handleLocationSearch: PropTypes.func,
-  handleListSearch: PropTypes.func,
   error: PropTypes.string,
   isLocationSearchOpen: PropTypes.bool,
   locations: PropTypes.array,
