@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { mapCurrentWeatherData, mapForecastData } from "../lib/mappers";
-import { WEATHER_TYPES, API, UNITS } from "../constants";
-import { API_KEY } from "../config";
+import { WEATHER_TYPES, API, UNITS, API_KEY } from "../constants";
 
 const useFetchWeather = (initialLocation) => {
   const [currentWeatherData, setCurrentWeatherData] = useState({});
@@ -10,20 +9,14 @@ const useFetchWeather = (initialLocation) => {
   const [unit, setUnit] = useState(UNITS.CELSIUS);
   const [isLoading, setIsLoading] = useState(true);
 
-  const generateUrl = (location, type, apiKey) => {
+  const buildWeatherUrl = (location, type) => {
     const baseEndpoint =
       type === WEATHER_TYPES.CURRENT ? API.CURRENT_URL : API.FORECAST_URL;
-    let url = "";
-
-    if (typeof location === "string") {
-      url = `${baseEndpoint}?q=${location}&appid=${apiKey}&units=metric`;
-    } else if (typeof location === "object" && location.lat && location.lon) {
-      url = `${baseEndpoint}?lat=${location.lat}&lon=${location.lon}&appid=${apiKey}&units=metric`;
-    } else {
-      throw new Error("Invalid location format");
-    }
-
-    return url;
+    const locationQuery =
+      typeof location === "string"
+        ? `q=${location}`
+        : `lat=${location.lat}&lon=${location.lon}`;
+    return `${baseEndpoint}?${locationQuery}&appid=${API_KEY}&units=metric`;
   };
 
   const fetchWeather = async (location, type) => {
@@ -31,8 +24,7 @@ const useFetchWeather = (initialLocation) => {
     setIsLoading(true);
 
     try {
-      const apiKey = API_KEY;
-      const url = generateUrl(location, type, apiKey);
+      const url = buildWeatherUrl(location, type);
       const response = await fetch(url);
 
       if (!response.ok) {
