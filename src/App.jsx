@@ -18,7 +18,7 @@ function App() {
     unit,
     isLoading,
     setUnit,
-    fetchWeather,
+    fetchWeatherForLocation,
     handleTemperatureUnit,
   } = useFetchWeather(initialLocation);
   const [isLocationSearchOpen, setIsLocationSearchOpen] = useState(false);
@@ -38,17 +38,17 @@ function App() {
   }, [locations]);
 
   const handleLocationSearch = async (location) => {
-    const isSuccessful = await fetchWeather(location, WEATHER_TYPES.CURRENT);
-    if (isSuccessful && typeof location === "string") {
-      setLocations((locations) => {
-        if (!locations.includes(location)) {
-          return [...locations, location];
-        }
-        return locations;
-      });
-      handleLocationSearchVisibility();
+    const isValidLocation = await fetchWeatherForLocation(location);
+
+    if (isValidLocation && typeof location === "string") {
+      setLocations((prevLocations) =>
+        !prevLocations.includes(location)
+          ? [...prevLocations, location]
+          : prevLocations
+      );
     }
-    await fetchWeather(location, WEATHER_TYPES.FORECAST);
+
+    handleLocationSearchVisibility();
   };
 
   const handleListSearch = async (location) => {

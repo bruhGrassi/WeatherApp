@@ -101,7 +101,7 @@ const useFetchWeather = (initialLocation) => {
     unit,
     isLoading,
     setUnit,
-    fetchWeather,
+    fetchWeatherForLocation,
     handleTemperatureUnit,
   };
 };
