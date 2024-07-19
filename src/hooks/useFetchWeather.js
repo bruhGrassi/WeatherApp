@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { mapCurrentWeatherData, mapForecastData } from "../lib/mappers";
 import { WEATHER_TYPES, API, UNITS, API_KEY } from "../constants";
 
@@ -19,44 +19,37 @@ const useFetchWeather = (initialLocation) => {
     return `${baseEndpoint}?${locationQuery}&appid=${API_KEY}&units=metric`;
   };
 
-  const fetchWeather = async (location, type) => {
-    setError("");
+  const fetchWeatherData = async (location, type) => {
     setIsLoading(true);
-
     try {
       const url = buildWeatherUrl(location, type);
+
       const response = await fetch(url);
-
-      if (!response.ok) {
-        throw new Error("City not found");
-      }
-
+      if (!response.ok) throw new Error("City not found");
       const data = await response.json();
-      const mappedData =
-        type === WEATHER_TYPES.CURRENT
-          ? mapCurrentWeatherData(data)
-          : mapForecastData(data);
-
       if (type === WEATHER_TYPES.CURRENT) {
-        setCurrentWeatherData(mappedData);
-      } else if (type === WEATHER_TYPES.FORECAST) {
-        setForecastWeatherData(mappedData);
+        setCurrentWeatherData(mapCurrentWeatherData(data));
+      } else {
+        setForecastWeatherData(mapForecastData(data));
       }
 
       return true;
-    } catch (error) {
-      console.error("Error fetching weather data:", error);
-      setError(error.message);
+    } catch (err) {
+      setError(err.message);
       return false;
-    } finally {
-      setIsLoading(false);
     }
   };
 
-  const fetchWeatherForLocation = async (location) => {
-    await fetchWeather(location, WEATHER_TYPES.CURRENT);
-    await fetchWeather(location, WEATHER_TYPES.FORECAST);
-  };
+  const fetchWeatherForLocation = useCallback(async (location) => {
+    setError(null);
+    setIsLoading(true);
+    const results = await Promise.all([
+      fetchWeatherData(location, WEATHER_TYPES.CURRENT),
+      fetchWeatherData(location, WEATHER_TYPES.FORECAST),
+    ]);
+    setIsLoading(false);
+    return results.every((result) => result);
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -77,7 +70,7 @@ const useFetchWeather = (initialLocation) => {
     };
 
     fetchData();
-  }, []);
+  }, [fetchWeatherForLocation, initialLocation]);
 
   const handleTemperatureUnit = (tempInCelsius, unit) => {
     if (unit === UNITS.CELSIUS) {

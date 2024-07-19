@@ -46,9 +46,8 @@ function App() {
           ? [...prevLocations, location]
           : prevLocations
       );
+      handleLocationSearchVisibility();
     }
-
-    handleLocationSearchVisibility();
   };
 
   const handleLocationSearchVisibility = () => {
