@@ -12,7 +12,7 @@ const TodayWeather = ({
   description,
   image,
   unit,
-  handleOnClick,
+  handleOnGeolocationClick,
 }) => {
   const iconUrl = `${ICON_URL}${image}@4x.png`;
   const options = { weekday: "short", month: "short", day: "numeric" };
@@ -27,7 +27,7 @@ const TodayWeather = ({
         >
           Search for places
         </button>
-        <RoundButton variant="icon" onClick={handleOnClick}>
+        <RoundButton variant="icon" onClick={handleOnGeolocationClick}>
           <img src={Crosshair} />
         </RoundButton>
       </div>
@@ -63,7 +63,7 @@ TodayWeather.propTypes = {
   image: PropTypes.string,
   unit: PropTypes.string,
   handleCurrentLocation: PropTypes.func,
-  handleOnClick: PropTypes.func,
+  handleOnGeolocationClick: PropTypes.func,
 };
 
 export default TodayWeather;

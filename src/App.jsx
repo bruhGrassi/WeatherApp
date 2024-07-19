@@ -103,7 +103,7 @@ function App() {
                 image={currentWeatherData.image}
                 unit={unit}
                 handleLocationSearchVisibility={handleLocationSearchVisibility}
-                handleOnClick={handleCurrentLocationPosition}
+                handleOnGeolocationClick={handleCurrentLocationPosition}
               />
             </aside>
             <main className="main">
