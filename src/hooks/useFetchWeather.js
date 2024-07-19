@@ -3,7 +3,7 @@ import { mapCurrentWeatherData, mapForecastData } from "../lib/mappers";
 import { WEATHER_TYPES, API, UNITS, API_KEY } from "../constants";
 
 const useFetchWeather = (initialLocation) => {
-  const [currentWeatherData, setCurrentWeatherData] = useState({});
+  const [currentWeatherData, setCurrentWeatherData] = useState(null);
   const [forecastWeatherData, setForecastWeatherData] = useState([]);
   const [error, setError] = useState(null);
   const [unit, setUnit] = useState(UNITS.CELSIUS);

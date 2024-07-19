@@ -6,7 +6,7 @@ import RoundButton from "./components/RoundButton/RoundButton";
 import WeatherCard from "./components/WeatherCard/WeatherCard";
 import HighlightCard from "./components/HighlightCard/HighlightCard";
 import Skeleton from "./components/Skeleton/Skeleton";
-import { WEATHER_TYPES, UNITS } from "./constants";
+import { UNITS } from "./constants";
 import "./App.css";
 
 function App() {
