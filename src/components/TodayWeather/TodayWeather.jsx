@@ -38,7 +38,7 @@ const TodayWeather = ({
       <div className="today-weather__temperature">
         {temperature}
         <span>
-          °{unit === UNITS.CELCIUS ? UNITS.CELCIUS : UNITS.FAHRENHEIT}
+          °{unit === UNITS.CELSIUS ? UNITS.CELSIUS : UNITS.FAHRENHEIT}
         </span>
       </div>
       <div className="today-weather__climate">{description}</div>

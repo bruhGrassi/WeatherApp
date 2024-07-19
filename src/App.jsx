@@ -110,8 +110,8 @@ function App() {
               <div className="main__header">
                 <RoundButton
                   variant="primary"
-                  isActive={unit === UNITS.CELCIUS}
-                  onClick={() => setUnit(UNITS.CELCIUS)}
+                  isActive={unit === UNITS.CELSIUS}
+                  onClick={() => setUnit(UNITS.CELSIUS)}
                 >
                   °C
                 </RoundButton>

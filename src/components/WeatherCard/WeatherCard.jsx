@@ -11,11 +11,11 @@ const WeatherCard = ({ date, min_temp, max_temp, image, unit }) => {
       <div className="weather-card__temperature">
         <div className="weather-card__temperature--max">
           {max_temp}°{" "}
-          {unit === UNITS.CELCIUS ? UNITS.CELCIUS : UNITS.FAHRENHEIT}
+          {unit === UNITS.CELSIUS ? UNITS.CELSIUS : UNITS.FAHRENHEIT}
         </div>
         <div className="weather-card__temperature--min">
           {min_temp}°{" "}
-          {unit === UNITS.CELCIUS ? UNITS.CELCIUS : UNITS.FAHRENHEIT}
+          {unit === UNITS.CELSIUS ? UNITS.CELSIUS : UNITS.FAHRENHEIT}
         </div>
       </div>
     </div>

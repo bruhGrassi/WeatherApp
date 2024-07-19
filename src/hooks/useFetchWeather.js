@@ -7,7 +7,7 @@ const useFetchWeather = (initialLocation) => {
   const [currentWeatherData, setCurrentWeatherData] = useState({});
   const [forecastWeatherData, setForecastWeatherData] = useState([]);
   const [error, setError] = useState(null);
-  const [unit, setUnit] = useState(UNITS.CELCIUS);
+  const [unit, setUnit] = useState(UNITS.CELSIUS);
   const [isLoading, setIsLoading] = useState(true);
 
   const generateUrl = (location, type, apiKey) => {
@@ -88,7 +88,7 @@ const useFetchWeather = (initialLocation) => {
   }, []);
 
   const handleTemperatureUnit = (tempInCelsius, unit) => {
-    if (unit === UNITS.CELCIUS) {
+    if (unit === UNITS.CELSIUS) {
       return Math.trunc(tempInCelsius);
     }
     return Math.trunc((tempInCelsius * 9) / 5 + 32);

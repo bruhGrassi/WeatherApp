@@ -9,7 +9,7 @@ export const API = {
 };
 
 export const UNITS = {
-  CELCIUS: "C",
+  CELSIUS: "C",
   FAHRENHEIT: "F",
 };
 
