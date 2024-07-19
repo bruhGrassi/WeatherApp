@@ -7,11 +7,11 @@ import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import "./LocationSearch.css";
 
 const LocationSearch = ({
-  handleLocationSearchVisibility,
   error,
-  isLocationSearchOpen,
   locations,
+  isLocationSearchOpen,
   handleLocationSearch,
+  handleLocationSearchVisibility,
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -70,12 +70,11 @@ const LocationSearch = ({
 };
 
 LocationSearch.propTypes = {
-  handleLocationSearchVisibility: PropTypes.func,
-  handleLocationSearch: PropTypes.func,
   error: PropTypes.string,
-  isLocationSearchOpen: PropTypes.bool,
   locations: PropTypes.array,
-  setLocations: PropTypes.func,
+  isLocationSearchOpen: PropTypes.bool,
+  handleLocationSearch: PropTypes.func,
+  handleLocationSearchVisibility: PropTypes.func,
 };
 
 export default LocationSearch;

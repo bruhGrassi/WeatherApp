@@ -6,13 +6,13 @@ import { UNITS, ICON_URL } from "../../constants";
 import "./TodayWeather.css";
 
 const TodayWeather = ({
-  handleLocationSearchVisibility,
   cityName,
   temperature,
   description,
   image,
   unit,
   handleOnGeolocationClick,
+  handleLocationSearchVisibility,
 }) => {
   const iconUrl = `${ICON_URL}${image}@4x.png`;
   const options = { weekday: "short", month: "short", day: "numeric" };
@@ -56,14 +56,13 @@ const TodayWeather = ({
 };
 
 TodayWeather.propTypes = {
-  handleLocationSearchVisibility: PropTypes.func,
   cityName: PropTypes.string,
   temperature: PropTypes.number,
   description: PropTypes.string,
   image: PropTypes.string,
   unit: PropTypes.string,
-  handleCurrentLocation: PropTypes.func,
   handleOnGeolocationClick: PropTypes.func,
+  handleLocationSearchVisibility: PropTypes.func,
 };
 
 export default TodayWeather;

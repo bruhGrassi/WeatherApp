@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import RightArrow from "../../assets/icons/right-arrow.png";
 import "./LocationItem.css";
 
-const LocationItem = ({ handleLocation, text }) => {
+const LocationItem = ({ text, handleLocation }) => {
   return (
     <button className="location-item" onClick={handleLocation}>
       {text}
@@ -12,8 +12,8 @@ const LocationItem = ({ handleLocation, text }) => {
 };
 
 LocationItem.propTypes = {
-  handleLocation: PropTypes.func,
   text: PropTypes.string,
+  handleLocation: PropTypes.func,
 };
 
 export default LocationItem;

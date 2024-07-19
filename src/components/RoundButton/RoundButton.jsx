@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import "./RoundButton.css";
 
-const RoundButton = ({ onClick, children, variant, isActive }) => {
+const RoundButton = ({ children, variant, isActive, onClick }) => {
   const buttonClasses = [
     "round-button",
     `round-button__${variant}`,
@@ -16,10 +16,10 @@ const RoundButton = ({ onClick, children, variant, isActive }) => {
 };
 
 RoundButton.propTypes = {
-  onClick: PropTypes.func,
   children: PropTypes.node,
   variant: PropTypes.string,
   isActive: PropTypes.bool,
+  onClick: PropTypes.func,
 };
 
 export default RoundButton;
