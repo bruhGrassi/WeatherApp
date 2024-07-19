@@ -73,10 +73,9 @@ const useFetchWeather = (initialLocation) => {
   }, [fetchWeatherForLocation, initialLocation]);
 
   const handleTemperatureUnit = (tempInCelsius, unit) => {
-    if (unit === UNITS.CELSIUS) {
-      return Math.trunc(tempInCelsius);
-    }
-    return Math.trunc((tempInCelsius * 9) / 5 + 32);
+    return unit === UNITS.CELSIUS
+      ? Math.trunc(tempInCelsius)
+      : Math.trunc((tempInCelsius * 9) / 5 + 32);
   };
 
   return {
