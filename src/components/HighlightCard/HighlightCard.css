@@ -53,8 +53,9 @@
   align-items: center;
 }
 
-.highlight-card__other--icon img {
+.highlight-card__other--icon svg {
   width: 1rem;
+  fill: var(--color-action-primary);
 }
 
 .highlight-card__range {

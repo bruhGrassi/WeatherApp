@@ -1,7 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import Close from "../../assets/icons/close.png";
-import Search from "../../assets/icons/search.png";
+import { X, Search } from "lucide-react";
 import LocationItem from "../Locationitem/LocationItem";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import "./LocationSearch.css";
@@ -39,7 +38,7 @@ const LocationSearch = ({
         className="close__trigger"
         onClick={handleLocationSearchVisibility}
       >
-        <img src={Close} alt="Close icon" />
+        <X />
       </button>
       <form className="location-search__form" onSubmit={handleSearch}>
         <div className="location-search__input">
@@ -49,7 +48,7 @@ const LocationSearch = ({
             value={searchTerm}
             onChange={handleInputChange}
           />
-          <img src={Search} alt="Search icon" />
+          <Search className="location-search__input--icon" />
         </div>
         <button className="location-search__trigger">Search</button>
       </form>

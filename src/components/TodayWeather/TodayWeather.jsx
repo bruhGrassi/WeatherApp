@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
-import Pin from "../../assets/icons/pin.png";
-import Crosshair from "../../assets/icons/crosshair.png";
+import { Crosshair, MapPin } from "lucide-react";
 import RoundButton from "../../components/RoundButton/RoundButton";
 import { UNITS, ICON_URL } from "../../constants";
 import "./TodayWeather.css";
@@ -28,7 +27,7 @@ const TodayWeather = ({
           Search for places
         </button>
         <RoundButton variant="icon" onClick={handleOnGeolocationClick}>
-          <img src={Crosshair} />
+          <Crosshair />
         </RoundButton>
       </div>
 
@@ -47,7 +46,7 @@ const TodayWeather = ({
           <span>Today</span> • <span>{today}</span>
         </p>
         <p>
-          <img src={Pin} alt={Pin} />
+          <MapPin />
           {cityName}
         </p>
       </div>

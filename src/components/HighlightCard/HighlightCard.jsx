@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
+import { Navigation } from "lucide-react";
 import PercentageLine from "../../components/PercentageLine/PercentageLine";
-import Navigate from "../../assets/icons/navigate.png";
 import "./HighlightCard.css";
 
 const HighlightCard = ({ title, data, unit, other, range }) => {
@@ -14,7 +14,7 @@ const HighlightCard = ({ title, data, unit, other, range }) => {
       {other && (
         <div className="highlight-card__other">
           <span className="highlight-card__other--icon">
-            <img src={Navigate} alt="Navigate arrow" />
+            <Navigation />
           </span>
           WSW
         </div>

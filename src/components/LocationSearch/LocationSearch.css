@@ -42,12 +42,13 @@
   color: var(--color-tertiary);
 }
 
-.location-search__input img {
+.location-search__input--icon {
   position: absolute;
   top: 50%;
   left: 0.75rem;
   width: 1.09375rem;
   transform: translateY(-50%);
+  color: var(--color-action-primary);
 }
 
 .location-search__trigger {
@@ -63,6 +64,9 @@
   background: transparent;
   width: 1.084375rem;
   position: absolute;
-  right: 2.5rem;
+  right: 2rem;
   top: 2rem;
+  height: 2rem;
+  width: 2rem;
+  color: var(--color-action-primary);
 }

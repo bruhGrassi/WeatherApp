@@ -10,6 +10,7 @@
 
 .round-button__icon {
   background-color: var(--color-action-ternary);
+  color: var(--color-action-primary);
 }
 
 .round-button__icon img {
