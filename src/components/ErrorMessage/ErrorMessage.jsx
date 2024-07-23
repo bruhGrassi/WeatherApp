@@ -1,8 +1,14 @@
 import PropTypes from "prop-types";
-import "./ErrorMessage.css";
+import styled from "styled-components";
+
+const Errortext = styled.p`
+  font-size: 1rem;
+  color: var(--color-error);
+  padding-top: 0.5rem;
+`;
 
 const ErrorMessage = ({ error }) => {
-  return error ? <p className="error-message">{error}</p> : null;
+  return error ? <Errortext>{error}</Errortext> : null;
 };
 
 ErrorMessage.propTypes = {
