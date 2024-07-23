@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
-import { Crosshair } from "lucide-react";
-import { MapPin } from "lucide-react";
+import { Crosshair, MapPin } from "lucide-react";
 import RoundButton from "../../components/RoundButton/RoundButton";
 import { UNITS, ICON_URL } from "../../constants";
 import "./TodayWeather.css";

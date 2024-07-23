@@ -1,7 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import { X } from "lucide-react";
-import { Search } from "lucide-react";
+import { X, Search } from "lucide-react";
 import LocationItem from "../Locationitem/LocationItem";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import "./LocationSearch.css";
