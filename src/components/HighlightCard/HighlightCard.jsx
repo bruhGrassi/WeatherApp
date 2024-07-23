@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { Navigation } from "lucide-react";
 import PercentageLine from "../../components/PercentageLine/PercentageLine";
-import "./HighlightCard.css";
 
 const commonStyles = css`
   font-family: inherit;
