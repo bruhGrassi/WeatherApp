@@ -23,8 +23,8 @@
   text-transform: uppercase;
 }
 
-.location-item img {
-  width: 1rem;
+.location-item svg {
+  width: 2rem;
   opacity: 0;
 }
 
@@ -34,7 +34,7 @@
   scale: 1;
 }
 
-.location-item:hover img {
+.location-item:hover svg {
   opacity: 1;
 }
 
