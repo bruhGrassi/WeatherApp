@@ -26,7 +26,7 @@ const LocationSearchWrapper = styled.div`
   transition: all ease-in-out 0.4s;
 
   ${(props) =>
-    props.isLocationSearchOpen &&
+    props.$isLocationSearchOpen &&
     `
       transform: translateX(0);
     `}
@@ -118,7 +118,7 @@ const LocationSearch = ({
   };
 
   return (
-    <LocationSearchWrapper isLocationSearchOpen={isLocationSearchOpen}>
+    <LocationSearchWrapper $isLocationSearchOpen={isLocationSearchOpen}>
       <CloseTrigger onClick={handleLocationSearchVisibility}>
         <X />
       </CloseTrigger>
