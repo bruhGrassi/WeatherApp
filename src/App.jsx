@@ -7,7 +7,18 @@ import WeatherCard from "./components/WeatherCard/WeatherCard";
 import HighlightCard from "./components/HighlightCard/HighlightCard";
 import Skeleton from "./components/Skeleton/Skeleton";
 import { UNITS } from "./constants";
-import "./App.css";
+import GlobalStyles from "./style/global";
+import {
+  Container,
+  Wrapper,
+  Aside,
+  Main,
+  MainHeader,
+  MainWeather,
+  MainHighlightText,
+  MainHighlight,
+  Link,
+} from "./style";
 
 function App() {
   const initialLocation = "Firenze";
@@ -71,12 +82,12 @@ function App() {
   };
 
   return (
-    <div className="container">
+    <Container>
       {isLoading ? (
         <Skeleton />
       ) : (
-        <section className="wrapper">
-          <aside className="aside">
+        <Wrapper>
+          <Aside>
             <LocationSearch
               handleLocationSearchVisibility={handleLocationSearchVisibility}
               handleLocationSearch={handleLocationSearch}
@@ -95,9 +106,9 @@ function App() {
               handleLocationSearchVisibility={handleLocationSearchVisibility}
               handleOnGeolocationClick={handleCurrentLocationPosition}
             />
-          </aside>
-          <main className="main">
-            <div className="main__header">
+          </Aside>
+          <Main>
+            <MainHeader>
               <RoundButton
                 variant="primary"
                 isActive={unit === UNITS.CELSIUS}
@@ -112,9 +123,9 @@ function App() {
               >
                 °F
               </RoundButton>
-            </div>
+            </MainHeader>
 
-            <div className="main__weather">
+            <MainWeather>
               {forecastWeatherData.map((forecastItem, index) => (
                 <WeatherCard
                   key={index}
@@ -125,10 +136,10 @@ function App() {
                   unit={unit}
                 />
               ))}
-            </div>
-            <p className="main__highlight--text">Today's Highlight</p>
+            </MainWeather>
+            <MainHighlightText>Today's Highlight</MainHighlightText>
 
-            <div className="main__highlight">
+            <MainHighlight>
               <HighlightCard
                 title={"Wind status"}
                 data={currentWeatherData.wind}
@@ -151,19 +162,16 @@ function App() {
                 data={currentWeatherData.pressure}
                 unit={"mb"}
               />
-            </div>
+            </MainHighlight>
 
-            <a
-              href="https://github.com/bruhGrassi"
-              target="_blank"
-              className="link"
-            >
+            <Link href="https://github.com/bruhGrassi" target="_blank">
               Create by <span>Bruna Grassi</span>
-            </a>
-          </main>
-        </section>
+            </Link>
+          </Main>
+        </Wrapper>
       )}
-    </div>
+      <GlobalStyles />
+    </Container>
   );
 }
 
