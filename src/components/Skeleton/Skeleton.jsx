@@ -1,40 +1,45 @@
 import "./Skeleton.css";
+import { Wrapper, Aside, Main, MainHighlight } from "../../style";
+import { TodayWeatherWrapper } from "../TodayWeather/styles";
+import {
+  TodayWeatherHeaderSkeleton,
+  TodayWeatherImageSkeleton,
+  TodayWeatherClimateSkeleton,
+  MainHeaderSkeleton,
+  MainWeatherSkeleton,
+  MainHighlightTextSkeleton,
+  WeatherCardWrapperSkeleton,
+} from "./styles";
 
 const Skeleton = () => {
   return (
-    <section className="wrapper">
-      <aside className="aside">
-        <div className="today-weather">
-          <div className="today-weather__header skeleton"></div>
+    <Wrapper>
+      <Aside>
+        <TodayWeatherWrapper>
+          <TodayWeatherHeaderSkeleton />
 
-          <div className="today-weather__image skeleton"></div>
+          <TodayWeatherImageSkeleton />
 
-          <div className="today-weather__climate skeleton "></div>
-        </div>
-      </aside>
-      <main className="main">
-        <div className="main__header skeleton"></div>
-        <div className="main__weather ">
+          <TodayWeatherClimateSkeleton />
+        </TodayWeatherWrapper>
+      </Aside>
+      <Main>
+        <MainHeaderSkeleton />
+        <MainWeatherSkeleton>
           {Array.from({ length: 5 }, (_, index) => (
-            <div
-              key={index}
-              className="weather-card skeleton skeleton__card"
-            ></div>
+            <WeatherCardWrapperSkeleton key={index} />
           ))}
-        </div>
+        </MainWeatherSkeleton>
 
-        <p className="main__highlight--text skeleton"></p>
+        <MainHighlightTextSkeleton />
 
-        <div className="main__highlight">
+        <MainHighlight>
           {Array.from({ length: 4 }, (_, index) => (
-            <div
-              key={index}
-              className="highlight-card skeleton skeleton__card"
-            ></div>
+            <WeatherCardWrapperSkeleton key={index} />
           ))}
-        </div>
-      </main>
-    </section>
+        </MainHighlight>
+      </Main>
+    </Wrapper>
   );
 };
 
