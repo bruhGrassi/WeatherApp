@@ -1,4 +1,3 @@
-import "./Skeleton.css";
 import { Wrapper, Aside, Main, MainHighlight } from "../../style";
 import { TodayWeatherWrapper } from "../TodayWeather/styles";
 import {
