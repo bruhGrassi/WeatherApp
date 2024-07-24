@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { Item } from "./LocationItem";
+import { Item } from "./styles";
 import { ChevronRight } from "lucide-react";
 
 const LocationItem = ({ text, handleLocation }) => {

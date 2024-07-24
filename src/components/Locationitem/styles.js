@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Item = styled.button`
+export const Item = styled.button`
   width: 100%;
   height: 4rem;
   display: flex;
@@ -36,12 +36,3 @@ const Item = styled.button`
     max-height: 35rem;
   }
 `;
-
-const LocationItem = ({ text, handleLocation }) => {
-  return (
-    <Item onClick={handleLocation}>
-      {text}
-      <ChevronRight />
-    </Item>
-  );
-};

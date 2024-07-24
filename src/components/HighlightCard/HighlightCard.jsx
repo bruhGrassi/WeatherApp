@@ -1,15 +1,7 @@
 import PropTypes from "prop-types";
 import { Navigation } from "lucide-react";
 import PercentageLine from "../../components/PercentageLine/PercentageLine";
-import {
-  Wrapper,
-  Title,
-  Data,
-  Unit,
-  Other,
-  Icon,
-  Range,
-} from "./HighlightCard";
+import { Wrapper, Title, Data, Unit, Other, Icon, Range } from "./styles";
 
 const HighlightCard = ({ title, data, unit, other, range }) => {
   return (
