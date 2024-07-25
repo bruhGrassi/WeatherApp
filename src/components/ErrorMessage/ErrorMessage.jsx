@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
-import { Errortext } from "./styles";
+import { ErrorText } from "./styles";
 
 const ErrorMessage = ({ error }) => {
-  return error ? <Errortext>{error}</Errortext> : null;
+  return error ? <ErrorText>{error}</ErrorText> : null;
 };
 
 ErrorMessage.propTypes = {
