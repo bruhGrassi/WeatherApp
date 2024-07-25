@@ -5,7 +5,6 @@ export const TodayWeatherWrapper = styled.div`
   flex-direction: column;
   width: 100%;
   height: 100%;
-  font-family: var(--font-family);
 `;
 
 export const TodayWeatherHeader = styled.div`
@@ -33,7 +32,6 @@ export const TodayWeatherImage = styled.div`
 `;
 
 export const SearchTrigger = styled.button`
-  font-family: var(--font-family);
   font-size: 1rem;
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-xsmall);
@@ -46,7 +44,6 @@ export const SearchTrigger = styled.button`
 
 const TodayWeatherCommon = css`
   width: 100%;
-  font-family: inherit;
   text-align: center;
 `;
 

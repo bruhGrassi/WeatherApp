@@ -2,7 +2,6 @@ import styled, { css } from "styled-components";
 
 const ButtonVariants = {
   primary: css`
-    font-family: var(--font-family);
     font-size: var(--font-size-small);
     font-weight: var(--font-weight-bold);
     line-height: var(--line-height-small);

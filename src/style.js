@@ -72,7 +72,6 @@ export const MainWeather = styled.div`
 `;
 
 export const MainHighlightText = styled.p`
-  font-family: inherit;
   font-size: 1.5rem;
   font-weight: var(--font-weight-bold);
   line-height: 1.76125rem;

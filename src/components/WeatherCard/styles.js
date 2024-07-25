@@ -6,7 +6,6 @@ export const WeatherCardWrapper = styled.div`
 `;
 
 const WeatherCardCommon = css`
-  font-family: inherit;
   font-size: 1rem;
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-xsmall);

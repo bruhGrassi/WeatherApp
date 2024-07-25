@@ -93,7 +93,6 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    font-family: var(--font-family);
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
   }

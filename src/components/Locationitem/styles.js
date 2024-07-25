@@ -6,7 +6,6 @@ export const Item = styled.button`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: var(--font-family);
   font-size: 1rem;
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-xsmall);
