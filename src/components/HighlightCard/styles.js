@@ -1,13 +1,9 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
-const commonStyles = css`
-  font-family: inherit;
+export const Wrapper = styled.div`
   font-weight: var(--font-weight-medium);
   color: var(--color-tertiary);
   text-align: center;
-`;
-
-export const Wrapper = styled.div`
   flex: 1;
   background-color: var(--color-primary);
   padding: 2rem;
@@ -18,7 +14,6 @@ export const Wrapper = styled.div`
 `;
 
 export const Title = styled.p`
-  ${commonStyles}
   width: 100%;
   font-size: 1rem;
   line-height: var(--line-height-xsmall);
@@ -26,7 +21,6 @@ export const Title = styled.p`
 `;
 
 export const Data = styled.div`
-  ${commonStyles}
   font-size: 4rem;
   font-weight: var(--font-weight-bold);
   line-height: 4.696rem;
@@ -38,14 +32,12 @@ export const Data = styled.div`
 `;
 
 export const Unit = styled.span`
-  ${commonStyles}
   font-size: 2.25rem;
   line-height: 2.641rem;
   margin-left: 0.375rem;
 `;
 
 export const Other = styled.div`
-  ${commonStyles}
   font-size: 0.875rem;
   line-height: 1.0275rem;
   display: flex;
