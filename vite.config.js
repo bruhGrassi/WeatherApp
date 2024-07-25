@@ -13,4 +13,9 @@ export default defineConfig(({ mode }) => ({
     "process.env.NODE_ENV": `'${mode || "production"}'`,
     SC_DISABLE_SPEEDY: "true",
   },
+  test: {
+    environment: "jsdom",
+    globals: true,
+    setupFiles: "./vitest/setup.js",
+  },
 }));
