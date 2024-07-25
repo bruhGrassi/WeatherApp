@@ -3,7 +3,7 @@ import { Button } from "./styles";
 
 const RoundButton = ({ children, variant, isActive, onClick }) => {
   return (
-    <Button $variant={variant} $isActive={isActive} onClick={onClick}>
+    <Button $variant={variant} isActive={isActive} onClick={onClick}>
       {children}
     </Button>
   );
@@ -14,7 +14,6 @@ RoundButton.propTypes = {
   variant: PropTypes.string,
   isActive: PropTypes.bool,
   $variant: PropTypes.string,
-  $isActive: PropTypes.bool,
   onClick: PropTypes.func,
 };
 

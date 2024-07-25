@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-const ButtonVariantes = {
+const ButtonVariants = {
   primary: css`
     font-family: var(--font-family);
     font-size: var(--font-size-small);
@@ -28,10 +28,10 @@ export const Button = styled.button`
   border-radius: 50%;
   box-shadow: var(--box-shadow);
 
-  ${(props) => ButtonVariantes[props.$variant]}
+  ${({ $variant }) => ButtonVariants[$variant]}
 
-  ${(props) =>
-    props.$isActive &&
+  ${({ isActive }) =>
+    isActive &&
     css`
       background: var(--color-tertiary);
       color: var(--color-text-tertiary);
