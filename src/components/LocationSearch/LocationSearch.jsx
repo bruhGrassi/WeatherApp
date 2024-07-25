@@ -36,7 +36,7 @@ const LocationSearch = ({
   };
 
   return (
-    <LocationSearchWrapper $isLocationSearchOpen={isLocationSearchOpen}>
+    <LocationSearchWrapper isLocationSearchOpen={isLocationSearchOpen}>
       <CloseTrigger onClick={handleLocationSearchVisibility}>
         <X />
       </CloseTrigger>

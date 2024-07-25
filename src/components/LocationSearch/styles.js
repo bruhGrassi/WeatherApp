@@ -20,8 +20,8 @@ export const LocationSearchWrapper = styled.div`
   transform: translateX(-100%);
   transition: all ease-in-out 0.4s;
 
-  ${(props) =>
-    props.$isLocationSearchOpen &&
+  ${({ isLocationSearchOpen }) =>
+    isLocationSearchOpen &&
     `
       transform: translateX(0);
     `}
@@ -45,12 +45,8 @@ export const LocationSearchForm = styled.form`
   margin-top: 2.5rem;
 `;
 
-const commonHeight = css`
-  height: 3rem;
-`;
-
 export const LocationSearchInputWrapper = styled.div`
-  ${commonHeight}
+  height: 3rem;
   flex: 1;
   position: relative;
 
@@ -80,7 +76,7 @@ export const LocationSearchInputWrapper = styled.div`
 `;
 
 export const LocationSearchTrigger = styled.button`
-  ${commonHeight}
+  height: 3rem;
   width: 5.375rem;
   background: var(--color-search);
   color: var(--color-tertiary);
