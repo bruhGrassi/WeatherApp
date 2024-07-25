@@ -82,96 +82,107 @@ function App() {
   };
 
   return (
-    <Container>
-      {isLoading ? (
-        <Skeleton />
-      ) : (
-        <Wrapper>
-          <Aside>
-            <LocationSearch
-              handleLocationSearchVisibility={handleLocationSearchVisibility}
-              handleLocationSearch={handleLocationSearch}
-              error={error}
-              isLocationSearchOpen={isLocationSearchOpen}
-              locations={locations}
-              setLocations={setLocations}
-            />
-
-            <TodayWeather
-              cityName={currentWeatherData.name}
-              temperature={handleTemperatureUnit(currentWeatherData.temp, unit)}
-              description={currentWeatherData.description}
-              image={currentWeatherData.image}
-              unit={unit}
-              handleLocationSearchVisibility={handleLocationSearchVisibility}
-              handleOnGeolocationClick={handleCurrentLocationPosition}
-            />
-          </Aside>
-          <Main>
-            <MainHeader>
-              <RoundButton
-                variant="primary"
-                isActive={unit === UNITS.CELSIUS}
-                onClick={() => setUnit(UNITS.CELSIUS)}
-              >
-                °C
-              </RoundButton>
-              <RoundButton
-                variant="primary"
-                isActive={unit === UNITS.FAHRENHEIT}
-                onClick={() => setUnit(UNITS.FAHRENHEIT)}
-              >
-                °F
-              </RoundButton>
-            </MainHeader>
-
-            <MainWeather>
-              {forecastWeatherData.map((forecastItem, index) => (
-                <WeatherCard
-                  key={index}
-                  date={forecastItem.date}
-                  min_temp={handleTemperatureUnit(forecastItem.temp_min, unit)}
-                  max_temp={handleTemperatureUnit(forecastItem.temp_max, unit)}
-                  image={forecastItem.image}
-                  unit={unit}
-                />
-              ))}
-            </MainWeather>
-            <MainHighlightText>Today's Highlight</MainHighlightText>
-
-            <MainHighlight>
-              <HighlightCard
-                title={"Wind status"}
-                data={currentWeatherData.wind}
-                unit={"mph"}
-                other={true}
-              />
-              <HighlightCard
-                title={"Humidity"}
-                data={currentWeatherData.humidity}
-                unit={"%"}
-                range={currentWeatherData.humidity}
-              />
-              <HighlightCard
-                title={"Visibility"}
-                data={currentWeatherData.visibility}
-                unit={"miles"}
-              />
-              <HighlightCard
-                title={"Air Pressure"}
-                data={currentWeatherData.pressure}
-                unit={"mb"}
-              />
-            </MainHighlight>
-
-            <Link href="https://github.com/bruhGrassi" target="_blank">
-              Create by <span>Bruna Grassi</span>
-            </Link>
-          </Main>
-        </Wrapper>
-      )}
+    <>
       <GlobalStyles />
-    </Container>
+      <Container>
+        {isLoading ? (
+          <Skeleton />
+        ) : (
+          <Wrapper>
+            <Aside>
+              <LocationSearch
+                handleLocationSearchVisibility={handleLocationSearchVisibility}
+                handleLocationSearch={handleLocationSearch}
+                error={error}
+                isLocationSearchOpen={isLocationSearchOpen}
+                locations={locations}
+                setLocations={setLocations}
+              />
+
+              <TodayWeather
+                cityName={currentWeatherData.name}
+                temperature={handleTemperatureUnit(
+                  currentWeatherData.temp,
+                  unit
+                )}
+                description={currentWeatherData.description}
+                image={currentWeatherData.image}
+                unit={unit}
+                handleLocationSearchVisibility={handleLocationSearchVisibility}
+                handleOnGeolocationClick={handleCurrentLocationPosition}
+              />
+            </Aside>
+            <Main>
+              <MainHeader>
+                <RoundButton
+                  variant="primary"
+                  isActive={unit === UNITS.CELSIUS}
+                  onClick={() => setUnit(UNITS.CELSIUS)}
+                >
+                  °C
+                </RoundButton>
+                <RoundButton
+                  variant="primary"
+                  isActive={unit === UNITS.FAHRENHEIT}
+                  onClick={() => setUnit(UNITS.FAHRENHEIT)}
+                >
+                  °F
+                </RoundButton>
+              </MainHeader>
+
+              <MainWeather>
+                {forecastWeatherData.map((forecastItem, index) => (
+                  <WeatherCard
+                    key={index}
+                    date={forecastItem.date}
+                    min_temp={handleTemperatureUnit(
+                      forecastItem.temp_min,
+                      unit
+                    )}
+                    max_temp={handleTemperatureUnit(
+                      forecastItem.temp_max,
+                      unit
+                    )}
+                    image={forecastItem.image}
+                    unit={unit}
+                  />
+                ))}
+              </MainWeather>
+              <MainHighlightText>Today's Highlight</MainHighlightText>
+
+              <MainHighlight>
+                <HighlightCard
+                  title={"Wind status"}
+                  data={currentWeatherData.wind}
+                  unit={"mph"}
+                  other={true}
+                />
+                <HighlightCard
+                  title={"Humidity"}
+                  data={currentWeatherData.humidity}
+                  unit={"%"}
+                  range={currentWeatherData.humidity}
+                />
+                <HighlightCard
+                  title={"Visibility"}
+                  data={currentWeatherData.visibility}
+                  unit={"miles"}
+                />
+                <HighlightCard
+                  title={"Air Pressure"}
+                  data={currentWeatherData.pressure}
+                  unit={"mb"}
+                />
+              </MainHighlight>
+
+              <Link href="https://github.com/bruhGrassi" target="_blank">
+                Create by <span>Bruna Grassi</span>
+              </Link>
+            </Main>
+          </Wrapper>
+        )}
+      </Container>
+    </>
   );
 }
 
