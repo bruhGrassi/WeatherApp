@@ -1,30 +1,30 @@
 import PropTypes from "prop-types";
 import { Navigation } from "lucide-react";
 import PercentageLine from "../../components/PercentageLine/PercentageLine";
-import "./HighlightCard.css";
+import { Wrapper, Title, Data, Unit, Other, Icon, Range } from "./styles";
 
 const HighlightCard = ({ title, data, unit, other, range }) => {
   return (
-    <div className="highlight-card">
-      <div className="highlight-card__title">{title}</div>
-      <div className="highlight-card__data">
+    <Wrapper>
+      <Title>{title}</Title>
+      <Data>
         {data}
-        <span>{unit}</span>
-      </div>
+        <Unit>{unit}</Unit>
+      </Data>
       {other && (
-        <div className="highlight-card__other">
-          <span className="highlight-card__other--icon">
+        <Other>
+          <Icon>
             <Navigation />
-          </span>
+          </Icon>
           WSW
-        </div>
+        </Other>
       )}
       {range && (
-        <div className="highlight-card__range">
+        <Range>
           <PercentageLine percentage={range} />
-        </div>
+        </Range>
       )}
-    </div>
+    </Wrapper>
   );
 };
 

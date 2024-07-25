@@ -3,7 +3,14 @@ import PropTypes from "prop-types";
 import { X, Search } from "lucide-react";
 import LocationItem from "../Locationitem/LocationItem";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
-import "./LocationSearch.css";
+import {
+  LocationListWrapper,
+  LocationSearchWrapper,
+  CloseTrigger,
+  LocationSearchForm,
+  LocationSearchInputWrapper,
+  LocationSearchTrigger,
+} from "./styles";
 
 const LocationSearch = ({
   error,
@@ -29,33 +36,26 @@ const LocationSearch = ({
   };
 
   return (
-    <div
-      className={`location-search ${
-        isLocationSearchOpen ? "location-search--active" : ""
-      }`}
-    >
-      <button
-        className="close__trigger"
-        onClick={handleLocationSearchVisibility}
-      >
+    <LocationSearchWrapper isLocationSearchOpen={isLocationSearchOpen}>
+      <CloseTrigger onClick={handleLocationSearchVisibility}>
         <X />
-      </button>
-      <form className="location-search__form" onSubmit={handleSearch}>
-        <div className="location-search__input">
+      </CloseTrigger>
+      <LocationSearchForm onSubmit={handleSearch}>
+        <LocationSearchInputWrapper>
           <input
             type="text"
             placeholder="search location"
             value={searchTerm}
             onChange={handleInputChange}
           />
-          <Search className="location-search__input--icon" />
-        </div>
-        <button className="location-search__trigger">Search</button>
-      </form>
+          <Search />
+        </LocationSearchInputWrapper>
+        <LocationSearchTrigger>Search</LocationSearchTrigger>
+      </LocationSearchForm>
 
       <ErrorMessage error={error} />
 
-      <div className="location__wrapper">
+      <LocationListWrapper>
         {locations.map((location, index) => (
           <LocationItem
             key={index}
@@ -63,8 +63,8 @@ const LocationSearch = ({
             handleLocation={() => handleLocationSearch(location)}
           />
         ))}
-      </div>
-    </div>
+      </LocationListWrapper>
+    </LocationSearchWrapper>
   );
 };
 

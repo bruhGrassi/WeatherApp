@@ -2,7 +2,15 @@ import PropTypes from "prop-types";
 import { Crosshair, MapPin } from "lucide-react";
 import RoundButton from "../../components/RoundButton/RoundButton";
 import { UNITS, ICON_URL } from "../../constants";
-import "./TodayWeather.css";
+import {
+  TodayWeatherWrapper,
+  TodayWeatherHeader,
+  TodayWeatherImage,
+  SearchTrigger,
+  TodayWeatherTemperature,
+  TodayWeatherClimate,
+  TodayWeatherClimateInformation,
+} from "./styles";
 
 const TodayWeather = ({
   cityName,
@@ -18,30 +26,27 @@ const TodayWeather = ({
   const today = new Date().toLocaleDateString("en-US", options);
 
   return (
-    <div className="today-weather">
-      <div className="today-weather__header">
-        <button
-          className="search__trigger"
-          onClick={handleLocationSearchVisibility}
-        >
+    <TodayWeatherWrapper>
+      <TodayWeatherHeader>
+        <SearchTrigger onClick={handleLocationSearchVisibility}>
           Search for places
-        </button>
+        </SearchTrigger>
         <RoundButton variant="icon" onClick={handleOnGeolocationClick}>
           <Crosshair />
         </RoundButton>
-      </div>
+      </TodayWeatherHeader>
 
-      <div className="today-weather__image">
+      <TodayWeatherImage>
         <img src={iconUrl} alt="Weather Image" />
-      </div>
-      <div className="today-weather__temperature">
+      </TodayWeatherImage>
+      <TodayWeatherTemperature>
         {temperature}
         <span>
           °{unit === UNITS.CELSIUS ? UNITS.CELSIUS : UNITS.FAHRENHEIT}
         </span>
-      </div>
-      <div className="today-weather__climate">{description}</div>
-      <div className="today-weather__information">
+      </TodayWeatherTemperature>
+      <TodayWeatherClimate>{description}</TodayWeatherClimate>
+      <TodayWeatherClimateInformation>
         <p>
           <span>Today</span> • <span>{today}</span>
         </p>
@@ -49,8 +54,8 @@ const TodayWeather = ({
           <MapPin />
           {cityName}
         </p>
-      </div>
-    </div>
+      </TodayWeatherClimateInformation>
+    </TodayWeatherWrapper>
   );
 };
 

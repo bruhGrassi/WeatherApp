@@ -1,21 +1,22 @@
 import PropTypes from "prop-types";
-import "./PercentageLine.css";
+import {
+  PercentageContainer,
+  PercentageSteps,
+  PercentageProgress,
+  PercentageLabel,
+} from "./styles";
 
 const PercentageLine = ({ percentage }) => {
   return (
-    <div className="percentage__container">
-      <div className="percentage__steps">
+    <PercentageContainer>
+      <PercentageSteps>
         <span>0</span>
         <span>50</span>
         <span>100</span>
-      </div>
-      <progress
-        className="percentage__progress"
-        value={percentage}
-        max="100"
-      ></progress>
-      <div className="percentage__label">%</div>
-    </div>
+      </PercentageSteps>
+      <PercentageProgress value={percentage} max="100"></PercentageProgress>
+      <PercentageLabel>%</PercentageLabel>
+    </PercentageContainer>
   );
 };
 

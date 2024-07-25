@@ -7,7 +7,18 @@ import WeatherCard from "./components/WeatherCard/WeatherCard";
 import HighlightCard from "./components/HighlightCard/HighlightCard";
 import Skeleton from "./components/Skeleton/Skeleton";
 import { UNITS } from "./constants";
-import "./App.css";
+import GlobalStyles from "./style/global";
+import {
+  Container,
+  Wrapper,
+  Aside,
+  Main,
+  MainHeader,
+  MainWeather,
+  MainHighlightText,
+  MainHighlight,
+  Link,
+} from "./style";
 
 function App() {
   const initialLocation = "Firenze";
@@ -71,99 +82,107 @@ function App() {
   };
 
   return (
-    <div className="container">
-      {isLoading ? (
-        <Skeleton />
-      ) : (
-        <section className="wrapper">
-          <aside className="aside">
-            <LocationSearch
-              handleLocationSearchVisibility={handleLocationSearchVisibility}
-              handleLocationSearch={handleLocationSearch}
-              error={error}
-              isLocationSearchOpen={isLocationSearchOpen}
-              locations={locations}
-              setLocations={setLocations}
-            />
+    <>
+      <GlobalStyles />
+      <Container>
+        {isLoading ? (
+          <Skeleton />
+        ) : (
+          <Wrapper>
+            <Aside>
+              <LocationSearch
+                handleLocationSearchVisibility={handleLocationSearchVisibility}
+                handleLocationSearch={handleLocationSearch}
+                error={error}
+                isLocationSearchOpen={isLocationSearchOpen}
+                locations={locations}
+                setLocations={setLocations}
+              />
 
-            <TodayWeather
-              cityName={currentWeatherData.name}
-              temperature={handleTemperatureUnit(currentWeatherData.temp, unit)}
-              description={currentWeatherData.description}
-              image={currentWeatherData.image}
-              unit={unit}
-              handleLocationSearchVisibility={handleLocationSearchVisibility}
-              handleOnGeolocationClick={handleCurrentLocationPosition}
-            />
-          </aside>
-          <main className="main">
-            <div className="main__header">
-              <RoundButton
-                variant="primary"
-                isActive={unit === UNITS.CELSIUS}
-                onClick={() => setUnit(UNITS.CELSIUS)}
-              >
-                °C
-              </RoundButton>
-              <RoundButton
-                variant="primary"
-                isActive={unit === UNITS.FAHRENHEIT}
-                onClick={() => setUnit(UNITS.FAHRENHEIT)}
-              >
-                °F
-              </RoundButton>
-            </div>
+              <TodayWeather
+                cityName={currentWeatherData.name}
+                temperature={handleTemperatureUnit(
+                  currentWeatherData.temp,
+                  unit
+                )}
+                description={currentWeatherData.description}
+                image={currentWeatherData.image}
+                unit={unit}
+                handleLocationSearchVisibility={handleLocationSearchVisibility}
+                handleOnGeolocationClick={handleCurrentLocationPosition}
+              />
+            </Aside>
+            <Main>
+              <MainHeader>
+                <RoundButton
+                  variant="primary"
+                  isActive={unit === UNITS.CELSIUS}
+                  onClick={() => setUnit(UNITS.CELSIUS)}
+                >
+                  °C
+                </RoundButton>
+                <RoundButton
+                  variant="primary"
+                  isActive={unit === UNITS.FAHRENHEIT}
+                  onClick={() => setUnit(UNITS.FAHRENHEIT)}
+                >
+                  °F
+                </RoundButton>
+              </MainHeader>
 
-            <div className="main__weather">
-              {forecastWeatherData.map((forecastItem, index) => (
-                <WeatherCard
-                  key={index}
-                  date={forecastItem.date}
-                  min_temp={handleTemperatureUnit(forecastItem.temp_min, unit)}
-                  max_temp={handleTemperatureUnit(forecastItem.temp_max, unit)}
-                  image={forecastItem.image}
-                  unit={unit}
+              <MainWeather>
+                {forecastWeatherData.map((forecastItem, index) => (
+                  <WeatherCard
+                    key={index}
+                    date={forecastItem.date}
+                    min_temp={handleTemperatureUnit(
+                      forecastItem.temp_min,
+                      unit
+                    )}
+                    max_temp={handleTemperatureUnit(
+                      forecastItem.temp_max,
+                      unit
+                    )}
+                    image={forecastItem.image}
+                    unit={unit}
+                  />
+                ))}
+              </MainWeather>
+              <MainHighlightText>Today's Highlight</MainHighlightText>
+
+              <MainHighlight>
+                <HighlightCard
+                  title={"Wind status"}
+                  data={currentWeatherData.wind}
+                  unit={"mph"}
+                  other={true}
                 />
-              ))}
-            </div>
-            <p className="main__highlight--text">Today's Highlight</p>
+                <HighlightCard
+                  title={"Humidity"}
+                  data={currentWeatherData.humidity}
+                  unit={"%"}
+                  range={currentWeatherData.humidity}
+                />
+                <HighlightCard
+                  title={"Visibility"}
+                  data={currentWeatherData.visibility}
+                  unit={"miles"}
+                />
+                <HighlightCard
+                  title={"Air Pressure"}
+                  data={currentWeatherData.pressure}
+                  unit={"mb"}
+                />
+              </MainHighlight>
 
-            <div className="main__highlight">
-              <HighlightCard
-                title={"Wind status"}
-                data={currentWeatherData.wind}
-                unit={"mph"}
-                other={true}
-              />
-              <HighlightCard
-                title={"Humidity"}
-                data={currentWeatherData.humidity}
-                unit={"%"}
-                range={currentWeatherData.humidity}
-              />
-              <HighlightCard
-                title={"Visibility"}
-                data={currentWeatherData.visibility}
-                unit={"miles"}
-              />
-              <HighlightCard
-                title={"Air Pressure"}
-                data={currentWeatherData.pressure}
-                unit={"mb"}
-              />
-            </div>
-
-            <a
-              href="https://github.com/bruhGrassi"
-              target="_blank"
-              className="link"
-            >
-              Create by <span>Bruna Grassi</span>
-            </a>
-          </main>
-        </section>
-      )}
-    </div>
+              <Link href="https://github.com/bruhGrassi" target="_blank">
+                Create by <span>Bruna Grassi</span>
+              </Link>
+            </Main>
+          </Wrapper>
+        )}
+      </Container>
+    </>
   );
 }
 

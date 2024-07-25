@@ -1,13 +1,13 @@
 import PropTypes from "prop-types";
+import { Item } from "./styles";
 import { ChevronRight } from "lucide-react";
-import "./LocationItem.css";
 
 const LocationItem = ({ text, handleLocation }) => {
   return (
-    <button className="location-item" onClick={handleLocation}>
+    <Item onClick={handleLocation}>
       {text}
       <ChevronRight />
-    </button>
+    </Item>
   );
 };
 
