@@ -4,19 +4,19 @@ const GlobalStyles = createGlobalStyle`
   :root {
     /* Font settings */
     --font-family: "Raleway", sans-serif;
-    --font-size-small: 18px;
-    --font-size-medium: 36px;
-    --font-size-large: 48px;
-    --font-size-xlarge: 144px;
+    --font-size-small: 1.125rem;
+    --font-size-medium: 2.25rem;
+    --font-size-large: 3rem;
+    --font-size-xlarge: 9rem;
     --font-weight-regular: 400;
     --font-weight-medium: 500;
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
-    --line-height-xsmall: 18.78px;
-    --line-height-small: 21.13px;
-    --line-height-medium: 42.26px;
-    --line-height-large: 56.35px;
-    --line-height-xlarge: 169.06px;
+    --line-height-xsmall: 1.17375rem;
+    --line-height-small: 1.320625rem;
+    --line-height-medium: 2.64125rem;
+    --line-height-large: 3.521875rem;
+    --line-height-xlarge: 10.56625rem;
 
     /* Colors */
     --color-primary: #1e213a;
@@ -36,14 +36,19 @@ const GlobalStyles = createGlobalStyle`
     /* Box shadow */
     --box-shadow: 0px 4px 4px 0px #00000040;
 
+    --size-xs: 0.75rem; 
+    --size-sm: 1rem; 
+    --size-md: 2rem; 
+    --size-lg: 4rem; 
+
     /* Padding */
-    --padding-size-small: 21px;
-    --padding-size-medium: 42px;
-    --padding-size-large: 84px;
-    --padding-size-xlarge: 161px;
+    --padding-size-small: 1.3125rem;
+    --padding-size-medium: 2.625rem;
+    --padding-size-large: 5.25rem;
+    --padding-size-xlarge: 10.0625rem;
 
     /* Margin */
-    --margin-size-small: 16px;
+    --margin-size-small: var(--size-sm);
   }
 
   @font-face {

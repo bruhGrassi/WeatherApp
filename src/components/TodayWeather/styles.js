@@ -32,7 +32,7 @@ export const TodayWeatherImage = styled.div`
 `;
 
 export const SearchTrigger = styled.button`
-  font-size: 1rem;
+  font-size: var(--size-sm);
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-xsmall);
   box-shadow: var(--box-shadow);
@@ -87,7 +87,7 @@ export const TodayWeatherClimateInformation = styled.div`
     font-size: var(--font-size-small);
     font-weight: var(--font-weight-medium);
     line-height: var(--line-height-small);
-    padding-bottom: 1rem;
+    padding-bottom: var(--size-sm);
     display: flex;
     justify-content: center;
     align-items: center;

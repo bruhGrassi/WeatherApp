@@ -6,28 +6,28 @@ export const Wrapper = styled.div`
   text-align: center;
   flex: 1;
   background-color: var(--color-primary);
-  padding: 2rem;
+  padding: var(--size-md);
 
   @media (max-width: 1023px) {
-    padding: 1rem;
+    padding: var(--size-sm);
   }
 `;
 
 export const Title = styled.p`
   width: 100%;
-  font-size: 1rem;
+  font-size: var(--size-sm);
   line-height: var(--line-height-xsmall);
   color: var(--color-tertiary);
 `;
 
 export const Data = styled.div`
-  font-size: 4rem;
+  font-size: var(--size-lg);
   font-weight: var(--font-weight-bold);
   line-height: 4.696rem;
-  padding: 0.75rem 0;
+  padding: var(--size-xs) 0;
 
   @media (max-width: 1023px) {
-    font-size: 2rem;
+    font-size: var(--size-md);
   }
 `;
 
@@ -56,7 +56,7 @@ export const Icon = styled.span`
   align-items: center;
 
   & svg {
-    width: 1rem;
+    width: var(--size-sm);
     fill: var(--color-action-primary);
   }
 `;

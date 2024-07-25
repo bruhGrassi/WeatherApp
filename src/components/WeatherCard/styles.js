@@ -6,7 +6,7 @@ export const WeatherCardWrapper = styled.div`
 `;
 
 const WeatherCardCommon = css`
-  font-size: 1rem;
+  font-size: var(--size-sm);
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-xsmall);
 `;
@@ -25,7 +25,7 @@ export const WeatherCardImage = styled.img`
 export const WeatherCardTemperature = styled.div`
   display: flex;
   justify-content: space-between;
-  gap: 0.75rem;
+  gap: var(--size-xs);
 `;
 
 export const WeatherCardTemperatureMax = styled.div`

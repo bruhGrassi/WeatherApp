@@ -1,9 +1,9 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const LocationListWrapper = styled.div`
   max-height: 90%;
   overflow: auto;
-  padding-right: 1rem;
+  padding-right: var(--size-sm);
   margin-top: var(--padding-size-medium);
 `;
 
@@ -31,10 +31,10 @@ export const CloseTrigger = styled.button`
   background: transparent;
   width: 1.084375rem;
   position: absolute;
-  right: 2rem;
-  top: 2rem;
-  height: 2rem;
-  width: 2rem;
+  right: var(--size-md);
+  top: var(--size-md);
+  height: var(--size-md);
+  width: var(--size-md);
   color: var(--color-action-primary);
 `;
 
@@ -68,7 +68,7 @@ export const LocationSearchInputWrapper = styled.div`
   & svg {
     position: absolute;
     top: 50%;
-    left: 0.75rem;
+    left: var(--size-xs);
     width: 1.09375rem;
     transform: translateY(-50%);
     color: var(--color-action-primary);
@@ -80,7 +80,7 @@ export const LocationSearchTrigger = styled.button`
   width: 5.375rem;
   background: var(--color-search);
   color: var(--color-tertiary);
-  font-size: 1rem;
+  font-size: var(--size-sm);
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-xsmall);
 `;

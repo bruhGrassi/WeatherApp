@@ -9,7 +9,7 @@ import { WeatherCardWrapper } from "../WeatherCard/styles";
 
 export const SkeletonWrapper = css`
   background-color: var(--color-skeleton);
-  min-height: 2rem;
+  min-height: var(--size-md);
   border-radius: 0.2rem;
   position: relative;
   overflow: hidden;
@@ -43,7 +43,7 @@ export const SkeletonWrapper = css`
 
 export const SkeletonCard = css`
   height: 10rem;
-  margin-top: 2rem;
+  margin-top: var(--size-md);
 `;
 
 export const TodayWeatherHeaderSkeleton = styled(TodayWeatherHeader)`

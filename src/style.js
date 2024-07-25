@@ -42,11 +42,11 @@ export const Main = styled.main`
 
   @media (max-width: 1023px) {
     ${CommonStyle}
-    padding: 2rem 2rem 1rem;
+    padding: var(--size-md) var(--size-md) var(--size-sm);
   }
 
   @media (max-width: 1280px) {
-    padding: 2rem 2rem 1rem;
+    padding: var(--size-md) var(--size-md) var(--size-sm);
   }
 `;
 
@@ -60,7 +60,7 @@ export const MainHeader = styled.div`
 export const MainWeather = styled.div`
   display: grid;
   justify-content: space-between;
-  gap: 1rem;
+  gap: var(--size-sm);
 
   @media (max-width: 1280px) {
     grid-template-columns: repeat(2, 1fr);
@@ -77,12 +77,12 @@ export const MainHighlightText = styled.p`
   line-height: 1.76125rem;
   text-align: left;
   color: var(--color-tertiary);
-  margin: 3.875rem 0 2rem 0;
+  margin: 3.875rem 0 var(--size-md) 0;
 `;
 
 export const MainHighlight = styled.div`
   display: grid;
-  gap: 1rem;
+  gap: var(--size-sm);
 
   @media (max-width: 1023px) {
     grid-template-columns: 1fr;
@@ -106,7 +106,7 @@ export const Link = styled.a`
   text-align: center;
   color: var(--color-text-primary-light);
   text-decoration: none;
-  padding: 4rem 0 1rem 0;
+  padding: var(--size-lg) 0 var(--size-sm) 0;
 
   & span {
     font-weight: var(--font-weight-semibold);
