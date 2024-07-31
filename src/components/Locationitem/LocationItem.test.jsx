@@ -1,6 +1,6 @@
+import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import LocationItem from "./LocationItem";
-import { describe, it, expect, vi } from "vitest";
 
 describe("<LocationItem />", () => {
   it("renders the location name", () => {

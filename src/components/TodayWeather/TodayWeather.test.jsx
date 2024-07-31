@@ -1,6 +1,6 @@
+import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import TodayWeather from "./TodayWeather";
-import { describe, it, expect } from "vitest";
 
 describe("<TodayWeather />", () => {
   const props = {

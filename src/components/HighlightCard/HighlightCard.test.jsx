@@ -1,6 +1,6 @@
+import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import HighlightCard from "./HighlightCard";
-import { describe, it, expect } from "vitest";
 
 const renderHighlightCard = (props = {}) => {
   const defaultProps = {

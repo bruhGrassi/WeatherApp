@@ -1,5 +1,5 @@
-import { renderHook, waitFor, act } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
+import { renderHook, waitFor, act } from "@testing-library/react";
 import useFetchWeather from "./useFetchWeather";
 import { mapCurrentWeatherData, mapForecastData } from "../lib/mappers";
 

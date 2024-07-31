@@ -1,6 +1,6 @@
+import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import RoundButton from "./RoundButton";
-import { describe, it, expect, vi } from "vitest";
 
 describe("<RoundButton />", () => {
   it("renders the button", () => {
