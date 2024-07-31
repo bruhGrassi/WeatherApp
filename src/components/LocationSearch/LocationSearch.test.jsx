@@ -1,22 +1,25 @@
+import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import LocationSearch from "./LocationSearch";
-import { describe, it, expect, vi } from "vitest";
 
 describe("</ LocationSearch", () => {
-  const props = {
-    error: "",
-    locations: ["New York", "São Paulo"],
-    isLocationSearchOpen: true,
-    handleLocationSearch: vi.fn(),
-    handleLocationSearchVisibility: vi.fn(),
+  const renderLocationSearch = (props = {}) => {
+    const defaultProps = {
+      error: "",
+      locations: ["New York", "São Paulo"],
+      isLocationSearchOpen: true,
+      handleLocationSearch: vi.fn(),
+      handleLocationSearchVisibility: vi.fn(),
+    };
+    render(<LocationSearch {...defaultProps} {...props} />);
   };
 
   it("renders the error message", () => {
-    render(<LocationSearch {...props} error="some error here" />);
+    renderLocationSearch({ error: "some error here" });
   });
 
   it("renders LocationSearch correctly", () => {
-    render(<LocationSearch {...props} />);
+    renderLocationSearch();
 
     //Checks if the input field is render
     expect(screen.getByPlaceholderText("search location")).toBeInTheDocument();
@@ -30,15 +33,14 @@ describe("</ LocationSearch", () => {
   });
 
   it("renders location search form based on isLocationSearchOpen prop", () => {
-    render(<LocationSearch {...props} isLocationSearchOpen={true} />);
+    renderLocationSearch({ isLocationSearchOpen: true });
+
     expect(screen.getByPlaceholderText("search location")).toBeVisible();
   });
 
   it("calls handleLocationSearch when submitting a valid search term", () => {
     const handleLocationSearch = vi.fn();
-    render(
-      <LocationSearch {...props} handleLocationSearch={handleLocationSearch} />
-    );
+    renderLocationSearch({ handleLocationSearch: handleLocationSearch });
 
     // Simulates the change in the search field
     fireEvent.change(screen.getByPlaceholderText("search location"), {
