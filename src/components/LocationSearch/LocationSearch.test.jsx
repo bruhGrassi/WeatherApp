@@ -21,34 +21,34 @@ describe("</ LocationSearch", () => {
   it("renders LocationSearch correctly", () => {
     renderLocationSearch();
 
-    //Checks if the input field is render
-    expect(screen.getByPlaceholderText("search location")).toBeInTheDocument();
+    //Checks if the input field is rendered
+    expect(screen.getByPlaceholderText(/search location/i)).toBeInTheDocument();
 
-    //Checks if the serach button is render
-    expect(screen.getByText("Search")).toBeInTheDocument();
+    //Checks if the serach button is rendered
+    expect(screen.getByText(/Search/i)).toBeInTheDocument();
 
-    //Checks if the location list is render
-    expect(screen.getByText("New York")).toBeInTheDocument();
-    expect(screen.getByText("São Paulo")).toBeInTheDocument();
+    //Checks if the location list is rendered
+    expect(screen.getByText(/New York/i)).toBeInTheDocument();
+    expect(screen.getByText(/São Paulo/i)).toBeInTheDocument();
   });
 
   it("renders location search form based on isLocationSearchOpen prop", () => {
     renderLocationSearch({ isLocationSearchOpen: true });
 
-    expect(screen.getByPlaceholderText("search location")).toBeVisible();
+    expect(screen.getByPlaceholderText(/search location/i)).toBeVisible();
   });
 
   it("calls handleLocationSearch when submitting a valid search term", () => {
     const handleLocationSearch = vi.fn();
-    renderLocationSearch({ handleLocationSearch: handleLocationSearch });
+    renderLocationSearch({ handleLocationSearch });
 
     // Simulates the change in the search field
-    fireEvent.change(screen.getByPlaceholderText("search location"), {
+    fireEvent.change(screen.getByPlaceholderText(/search location/i), {
       target: { value: "Paris" },
     });
 
     // Simulates the click on the button
-    fireEvent.click(screen.getByText("Search"));
+    fireEvent.click(screen.getByText(/Search/i));
 
     // Checks if handleLocationSearch was called with the correct value
     expect(handleLocationSearch).toHaveBeenCalledWith("Paris");
