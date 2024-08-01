@@ -1,13 +1,13 @@
 import { describe, it, expect, vi } from "vitest";
-import { getDayOfWeek } from "./dates";
+import { getDayOfWeek, DAYS_OF_WEEK } from "./dates";
 
 describe("getDayOfWeek", () => {
   it("should return 'Tomorrow' for the date after today", () => {
-    const mockDate = new Date(2024, 0, 7);
-    vi.setSystemTime(mockDate);
+    const today = new Date(2024, 0, 7);
+    vi.setSystemTime(today);
 
-    const dayIndex = (mockDate.getDay() + 1) % 7;
-    expect(getDayOfWeek(dayIndex)).toBe("Tomorrow");
+    const tomorrow = new Date(2024, 0, 8).getDay();
+    expect(getDayOfWeek(tomorrow)).toBe("Tomorrow");
   });
 
   it("should return the correct day of the week", () => {
@@ -21,20 +21,12 @@ describe("getDayOfWeek", () => {
 
   it('should not return "Tomorrow" for any index other than the next day', () => {
     const today = new Date().getDay();
-    for (let i = 0; i < 7; i++) {
-      if (i !== (today + 1) % 7) {
-        expect(getDayOfWeek(i)).toBe(
-          [
-            "Sunday",
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday",
-          ][i]
-        );
+    const tomorrowIndex = today + 1;
+
+    DAYS_OF_WEEK.forEach((day, index) => {
+      if (index !== tomorrowIndex) {
+        expect(getDayOfWeek(index)).toBe(day);
       }
-    }
+    });
   });
 });
