@@ -6,9 +6,7 @@ describe("<PercentageLine />", () => {
   it("should render the progress bar", () => {
     render(<PercentageLine percentage={50} />);
 
-    const progressElement = screen.getByRole("progressbar");
-
-    expect(progressElement).toBeInTheDocument();
-    expect(progressElement).toHaveAttribute("value", "50");
+    expect(screen.getByRole("progressbar")).toBeInTheDocument();
+    expect(screen.getByRole("progressbar")).toHaveAttribute("value", "50");
   });
 });
