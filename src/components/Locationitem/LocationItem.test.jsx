@@ -16,6 +16,6 @@ describe("<LocationItem />", () => {
     //simulates a click on the item
     fireEvent.click(screen.getByText("New York"));
 
-    expect(handleLocation).toHaveBeenCalledTimes(1);
+    expect(handleLocation).toHaveBeenCalledOnce();
   });
 });
