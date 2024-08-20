@@ -43,6 +43,7 @@ export const Main = styled.main`
   @media (max-width: 1023px) {
     ${CommonStyle}
     padding: var(--size-md) var(--size-md) var(--size-sm);
+    max-height: none;
   }
 
   @media (max-width: 1280px) {
